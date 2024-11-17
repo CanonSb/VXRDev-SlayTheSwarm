@@ -25,9 +25,12 @@ namespace EzySlice {
             GameObject newObject = CreateUpperHull();
 
             if (newObject != null) {
-                newObject.transform.localPosition = original.transform.localPosition;
-                newObject.transform.localRotation = original.transform.localRotation;
-                newObject.transform.localScale = original.transform.localScale;
+                // newObject.transform.localPosition = original.transform.localPosition;
+                // newObject.transform.localRotation = original.transform.localRotation;
+                // newObject.transform.localScale = original.transform.localScale;
+                newObject.transform.position = original.transform.position;
+                newObject.transform.rotation = original.transform.rotation;
+                newObject.transform.localScale = original.transform.lossyScale;
 
                 Material[] shared = original.GetComponent<MeshRenderer>().sharedMaterials;
                 Mesh mesh = original.GetComponent<MeshFilter>().sharedMesh;
@@ -64,9 +67,12 @@ namespace EzySlice {
             GameObject newObject = CreateLowerHull();
 
             if (newObject != null) {
-                newObject.transform.localPosition = original.transform.localPosition;
-                newObject.transform.localRotation = original.transform.localRotation;
-                newObject.transform.localScale = original.transform.localScale;
+                // newObject.transform.localPosition = original.transform.localPosition;
+                // newObject.transform.localRotation = original.transform.localRotation;
+                // newObject.transform.localScale = original.transform.localScale;
+                newObject.transform.position = original.transform.position;
+                newObject.transform.rotation = original.transform.rotation;
+                newObject.transform.localScale = original.transform.lossyScale;
 
                 Material[] shared = original.GetComponent<MeshRenderer>().sharedMaterials;
                 Mesh mesh = original.GetComponent<MeshFilter>().sharedMesh;
