@@ -1,12 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
-using UnityEngine.InputSystem;
-using Unity.Profiling;
-using System;
+
 using Unity.VisualScripting;
-using UnityEditor.Callbacks;
+
 
 public class SliceObject : MonoBehaviour
 {
@@ -101,9 +98,14 @@ public class SliceObject : MonoBehaviour
 
     private IEnumerator ShrinkThenDestroy(GameObject obj)
     {
+        // Tag object for destruction
+        obj.tag = "WillBeDestroyed";
+
         yield return new WaitForSeconds(despawnTime);
-        if (!obj) yield break;
-        obj.layer = LayerMask.NameToLayer("Default");
+        if (obj == null) yield break;
+
+        // Set layer to default so obj can't be sliced while shrinking
+        obj.layer = LayerMask.NameToLayer("NotSliceable");
 
         Vector3 startingScale = obj.transform.localScale;
         float elapsedTime = 0f;
@@ -115,7 +117,7 @@ public class SliceObject : MonoBehaviour
            elapsedTime += Time.deltaTime;
            yield return null;
         }
-        if (obj) Destroy(obj);
+        if (obj != null) Destroy(obj);
     }
 
 }
