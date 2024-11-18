@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Hills.unity
     guid: 6be49330f2c314f54af131c64ea2b3b9
+  - enabled: 1
+    path: Assets/Scenes/Main-Backup.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 30960d1d53bbc8a449c0aad27be453ed,
       type: 2}
