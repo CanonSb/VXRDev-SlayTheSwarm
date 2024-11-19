@@ -386,23 +386,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2376089068005002000, guid: 5c507e1685df54440bba95ed93212fe6,
         type: 3}
-      propertyPath: agent
-      value: 
-      objectReference: {fileID: 1901001349}
-    - target: {fileID: 2376089068005002000, guid: 5c507e1685df54440bba95ed93212fe6,
-        type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 811105873}
     - target: {fileID: 3050146711565785863, guid: 5c507e1685df54440bba95ed93212fe6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.14
+      value: 37.23
       objectReference: {fileID: 0}
     - target: {fileID: 3050146711565785863, guid: 5c507e1685df54440bba95ed93212fe6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.21
+      value: 5.52
       objectReference: {fileID: 0}
     - target: {fileID: 3050146711565785863, guid: 5c507e1685df54440bba95ed93212fe6,
         type: 3}
@@ -444,11 +439,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4895071740171514069, guid: 5c507e1685df54440bba95ed93212fe6,
-        type: 3}
-      propertyPath: agent
-      value: 
-      objectReference: {fileID: 1901001349}
     - target: {fileID: 8916993036407602440, guid: 5c507e1685df54440bba95ed93212fe6,
         type: 3}
       propertyPath: m_Name
@@ -459,12 +449,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c507e1685df54440bba95ed93212fe6, type: 3}
---- !u!195 &1901001349 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 1162822575286898505, guid: 5c507e1685df54440bba95ed93212fe6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1901001348}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5848267433757101152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -528,6 +512,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8895367408714250665, guid: b2499128c37774510b0205b7a6b52e82,
+        type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 36b14cbc8fb114db28109a9923f40e01,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
