@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+// using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -84,7 +84,7 @@ public class EnemyVitals : MonoBehaviour
         foreach (GameObject part in enemyParts)
         {
             if (part == null || !part.activeInHierarchy) continue;
-            if (part.tag != "WillBeDestroyed") 
+            if (part.tag != "WillBeDestroyed")
             {
                 if (!part.GetComponent<Rigidbody>()) part.AddComponent<Rigidbody>();
                 Rigidbody rb = part.GetComponent<Rigidbody>();
@@ -103,7 +103,7 @@ public class EnemyVitals : MonoBehaviour
         obj.tag = "WillBeDestroyed";
         yield return new WaitForSeconds(3f);
         if (obj == null) yield break;
-        
+
         // Set layer to default so obj can't be sliced while shrinking
         obj.layer = LayerMask.NameToLayer("NotSliceable");
 
@@ -113,9 +113,9 @@ public class EnemyVitals : MonoBehaviour
 
         while (obj != null && elapsedTime < duration)
         {
-           obj.transform.localScale = Vector3.Lerp(startingScale, Vector3.zero, elapsedTime / duration);
-           elapsedTime += Time.deltaTime;
-           yield return null;
+            obj.transform.localScale = Vector3.Lerp(startingScale, Vector3.zero, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
         if (obj != null) Destroy(obj);
     }
