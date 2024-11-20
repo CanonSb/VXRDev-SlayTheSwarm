@@ -92,11 +92,4 @@ public class BasicEnemyMovement : MonoBehaviour
             animator.SetBool("isAttacking", false);
         }
     }
-
-    // Optional: Visualize attack range in editor
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
 }
