@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BasicEnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform target;
@@ -38,6 +38,7 @@ public class BasicEnemyMovement : MonoBehaviour
 
     void UpdateAnimator()
     {
+        if (!animator) return;
         // Check if the agent is moving
         bool isRunning = agent.velocity.magnitude > 0.8f && agent.remainingDistance > agent.radius;
         animator.SetBool("isRunning", isRunning);
@@ -77,6 +78,7 @@ public class BasicEnemyMovement : MonoBehaviour
 
     IEnumerator AttackCycle()
     {
+        
         isAttackCycleActive = true;
 
         while (true)
