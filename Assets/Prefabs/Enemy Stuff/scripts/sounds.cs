@@ -35,8 +35,6 @@ public class RandomAutoAudioPlayer : MonoBehaviour
         // Assign the footsteps clip to the footsteps AudioSource
         footstepsAudioSource.clip = footSteps;
 
-        // Set volume for both audio sources
-        footstepsAudioSource.volume = volume;
         gruntAudioSource.volume = volume;
 
         // Ensure the AudioSources exist

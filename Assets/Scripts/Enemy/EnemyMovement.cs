@@ -20,12 +20,17 @@ public class EnemyMovement : MonoBehaviour
     private Coroutine attackCycleCoroutine = null;
     private bool isInAttackRange = false;
 
+    private AudioSource goblinHitPlayerAudioSource;
+    public GameObject goblinHitPlayerController;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         target = Camera.main.transform; // Sets the target to the main camera's position
         hpController = GameObject.FindWithTag("GameController")?.GetComponent<PlayerHealth>();
+
+        goblinHitPlayerAudioSource = goblinHitPlayerController.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -99,7 +104,11 @@ public class EnemyMovement : MonoBehaviour
 
             // About how much time it takes for the sword to come down
             yield return new WaitForSeconds(0.8f);
-            if (isInAttackRange) hpController.takeDamage();
+            if (isInAttackRange) 
+            {
+                hpController.takeDamage();
+                goblinHitPlayerAudioSource.Play();
+            }
         }
     }
 
