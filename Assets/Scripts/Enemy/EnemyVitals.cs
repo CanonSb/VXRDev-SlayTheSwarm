@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
 // using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,12 +13,14 @@ public class EnemyVitals : MonoBehaviour
     public GameObject highestParentObj;
 
     private List<GameObject> enemyParts;
+    private EnemyMovement movement;
 
     // Start is called before the first frame update
     void Start()
     {
         if (agent == null) agent = GetComponent<NavMeshAgent>();
         enemyParts = new List<GameObject>();
+        movement = GetComponent<EnemyMovement>();
         AddAllChildrenAsEnemyParts(highestParentObj.transform);
 
         // Add event listeners for each GameObject in the list
@@ -34,9 +38,21 @@ public class EnemyVitals : MonoBehaviour
     private void OnGameObjectDestroyed(GameObject destroyedObject)
     {
         if (destroyedObject == null) return;
-        // Disable the specified component
+        // Remove the listeners attached to the children before destroying the parent
+        foreach (GameObject obj in vitalObjects)
+        {
+            if (obj != null)
+            {
+                Destroy(obj.GetComponent<DestroyListener>());
+            }
+        }
+        // Dsiable agent and movement
         if (agent != null && agent.enabled) agent.enabled = false;
+        if (movement != null && movement.enabled) movement.enabled = false;
+        // Begin destroying remaining body parts
         DestroyRemainingParts();
+        // Destroy this object containing everything after some time
+        StartCoroutine(DestroyParentAfterTime(10f));
     }
 
     // Custom listener class to detect destruction of GameObjects
@@ -108,5 +124,11 @@ public class EnemyVitals : MonoBehaviour
             yield return null;
         }
         if (obj != null) Destroy(obj);
+    }
+
+    private IEnumerator DestroyParentAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject);
     }
 }

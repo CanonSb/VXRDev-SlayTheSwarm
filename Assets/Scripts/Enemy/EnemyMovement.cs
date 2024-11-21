@@ -102,4 +102,13 @@ public class EnemyMovement : MonoBehaviour
             if (isInAttackRange) hpController.takeDamage();
         }
     }
+
+    // Stop attack if this script is disabled
+    void OnDisable()
+    {
+        if (attackCycleCoroutine != null)
+        {
+            StopCoroutine(attackCycleCoroutine);  // Stop the coroutine
+        }
+    }
 }
