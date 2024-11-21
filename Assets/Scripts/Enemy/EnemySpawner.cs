@@ -28,18 +28,18 @@ public class EnemySpawner : MonoBehaviour
         // Choose a random spawn zone
         GameObject selectedZone = spawnZones[Random.Range(0, spawnZones.Length)];
 
-        // Get a random point on ground within the selected zone's collider
+        // Get a random point within the selected zone's collider
         Collider zoneCollider = selectedZone.GetComponent<Collider>();
         if (zoneCollider != null)
         {
             Vector3 randomPosition = GetRandomPointInBounds(zoneCollider.bounds);
-            // Add some height so enemy doesn't spawn in the ground
-            randomPosition.y += 1;
+            randomPosition.y += 1; // Adjust height to avoid spawning inside the ground
 
-            // Instantiate the enemy at the random position
-            Instantiate(enemyPrefab, randomPosition, enemyPrefab.transform.rotation);
+            // Instantiate the enemy
+            GameObject spawnedEnemy = Instantiate(enemyPrefab, randomPosition, enemyPrefab.transform.rotation);
         }
     }
+
 
     private Vector3 GetRandomPointInBounds(Bounds bounds)
     {

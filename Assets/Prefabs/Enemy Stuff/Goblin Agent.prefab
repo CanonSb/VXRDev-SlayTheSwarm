@@ -2048,6 +2048,7 @@ GameObject:
   - component: {fileID: 2376089068005002000}
   - component: {fileID: 4895071740171514069}
   - component: {fileID: 9217691337920311280}
+  - component: {fileID: 6262455494148421712}
   m_Layer: 0
   m_Name: Goblin Agent
   m_TagString: Untagged
@@ -2148,3 +2149,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6262455494148421712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916993036407602440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34415a6b8cc03b54cb1124eb7bf41974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 6808d2ea6d09e4eca83e866fdcff6129, type: 3}
+  - {fileID: 8300000, guid: 9dc7b33ff8d8b4eabacd1ce33c82d101, type: 3}
+  - {fileID: 8300000, guid: 09aa7b8ad745346bea7fa2f219822ef7, type: 3}
+  - {fileID: 8300000, guid: fdc424bbc15f44fa9894f36664853857, type: 3}
+  minTimeBetweenSounds: 0
+  maxTimeBetweenSounds: 1
+  volume: 1
