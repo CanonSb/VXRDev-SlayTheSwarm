@@ -10,7 +10,6 @@ public class EnemyVitals : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject highestParentObj;
 
-    public GameObject destroyable;
     private List<GameObject> enemyParts;
 
     // Start is called before the first frame update
@@ -28,15 +27,6 @@ public class EnemyVitals : MonoBehaviour
                 // Add a listener to check when the object is destroyed
                 obj.AddComponent<DestroyListener>().Initialize(OnGameObjectDestroyed);
             }
-        }
-    }
-
-    void Update()
-    {
-        // Check if the spacebar is pressed
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Destroy(destroyable);
         }
     }
 
