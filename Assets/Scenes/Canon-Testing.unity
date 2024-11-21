@@ -941,7 +941,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 487994491}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1013434839
+--- !u!1001 &607593244
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -952,17 +952,17 @@ PrefabInstance:
     - target: {fileID: 3050146711565785863, guid: cf39aeb7930ccaa489151513bbfb4a8b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.37
+      value: 3.92
       objectReference: {fileID: 0}
     - target: {fileID: 3050146711565785863, guid: cf39aeb7930ccaa489151513bbfb4a8b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.298
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3050146711565785863, guid: cf39aeb7930ccaa489151513bbfb4a8b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.6
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: 3050146711565785863, guid: cf39aeb7930ccaa489151513bbfb4a8b,
         type: 3}
@@ -1004,11 +1004,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin Agent
       objectReference: {fileID: 0}
+    - target: {fileID: 8916993036407602440, guid: cf39aeb7930ccaa489151513bbfb4a8b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf39aeb7930ccaa489151513bbfb4a8b, type: 3}
+--- !u!114 &895311707 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 648012466276487195, guid: ff93b7c16187fcb4984ca0e60cfaa01e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1747156185}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b535fa3bfaba643831f5ec9badb847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1448967206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,6 +1072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 163198694}
   waveNum: 0
+  spawner: {fileID: 895311707}
 --- !u!1 &1546141529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,12 +1115,12 @@ PrefabInstance:
     - target: {fileID: 648012466276487195, guid: ff93b7c16187fcb4984ca0e60cfaa01e,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 648012466276487195, guid: ff93b7c16187fcb4984ca0e60cfaa01e,
         type: 3}
       propertyPath: spawnInterval
-      value: 2.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 648012466276487195, guid: ff93b7c16187fcb4984ca0e60cfaa01e,
         type: 3}
@@ -1595,4 +1613,4 @@ SceneRoots:
   - {fileID: 1902950190}
   - {fileID: 2053196185}
   - {fileID: 156710840}
-  - {fileID: 1013434839}
+  - {fileID: 607593244}

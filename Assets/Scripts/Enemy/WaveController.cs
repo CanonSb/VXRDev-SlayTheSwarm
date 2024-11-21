@@ -7,6 +7,7 @@ public class WaveController : MonoBehaviour
     // public Text timerText;  // For UnityEngine.UI.Text
     public TMP_Text timerText; // Uncomment if using TextMeshPro
     public int waveNum;
+    public EnemySpawner spawner;
 
     private float _elapsedTime = 0;
 
@@ -30,7 +31,7 @@ public class WaveController : MonoBehaviour
         int displaySeconds = Mathf.FloorToInt(_elapsedTime % 60);
 
         // Format the text
-        timerText.text = string.Format("{0:00}:{1:00}", displayMinutes, displaySeconds);
+        timerText.text = string.Format("{0:00}:{1:00}<br><size=40%>wave {2}</size>", displayMinutes, displaySeconds, waveNum + 1);
     }
 
 
@@ -38,23 +39,33 @@ public class WaveController : MonoBehaviour
     {
         switch (waveNum)
         {
-            // 0:30
+            // 0:00
             case 0:
+                spawner.spawnInterval = 3f;
+                return;
+            // 0:30
+            case 1:
+                spawner.spawnInterval = 2.5f;
                 return;
             // 1:00
-            case 1:
+            case 2:
+                spawner.spawnInterval = 2.25f;
                 return;
             // 1:30
-            case 2:
+            case 3:
+                spawner.spawnInterval = 2f;
                 return;
             // 2:00
-            case 3:
+            case 4:
+                spawner.spawnInterval = 1.75f;
                 return;
             // 2:30
-            case 4:
+            case 5:
+                spawner.spawnInterval = 1.5f;
                 return;
             // 3:00
-            case 5:
+            case 6:
+                spawner.spawnInterval = 1f;
                 return;
         }
     }

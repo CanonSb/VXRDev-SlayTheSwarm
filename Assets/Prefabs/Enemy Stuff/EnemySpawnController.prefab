@@ -47,4 +47,4 @@ MonoBehaviour:
   spawnZones: []
   enemyPrefab: {fileID: 8916993036407602440, guid: cf39aeb7930ccaa489151513bbfb4a8b,
     type: 3}
-  spawnInterval: 2
+  spawnInterval: 3.5
