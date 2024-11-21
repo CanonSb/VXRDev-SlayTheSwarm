@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
-public class BasicEnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform target;
     private Animator animator;
+    private PlayerHealth hpController;
 
     [SerializeField]
     private float attackRange = 2f;
@@ -16,12 +18,14 @@ public class BasicEnemyMovement : MonoBehaviour
 
     private bool isAttackCycleActive = false;
     private Coroutine attackCycleCoroutine = null;
+    private bool isInAttackRange = false;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         target = Camera.main.transform; // Sets the target to the main camera's position
+        hpController = GameObject.FindWithTag("GameController")?.GetComponent<PlayerHealth>();
     }
 
     void Update()
@@ -38,13 +42,14 @@ public class BasicEnemyMovement : MonoBehaviour
 
     void UpdateAnimator()
     {
+        if (!animator) return;
         // Check if the agent is moving
         bool isRunning = agent.velocity.magnitude > 0.8f && agent.remainingDistance > agent.radius;
         animator.SetBool("isRunning", isRunning);
 
         // Check if within attack range
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
-        bool isInAttackRange = distanceToTarget <= attackRange;
+        isInAttackRange = distanceToTarget <= attackRange;
 
         // Handle attack cycle
         if (isInAttackRange && !isRunning)
@@ -77,6 +82,7 @@ public class BasicEnemyMovement : MonoBehaviour
 
     IEnumerator AttackCycle()
     {
+        
         isAttackCycleActive = true;
 
         while (true)
@@ -90,6 +96,19 @@ public class BasicEnemyMovement : MonoBehaviour
             // Immediately reset attack state
             yield return new WaitForEndOfFrame();
             animator.SetBool("isAttacking", false);
+
+            // About how much time it takes for the sword to come down
+            yield return new WaitForSeconds(0.8f);
+            if (isInAttackRange) hpController.takeDamage();
+        }
+    }
+
+    // Stop attack if this script is disabled
+    void OnDisable()
+    {
+        if (attackCycleCoroutine != null)
+        {
+            StopCoroutine(attackCycleCoroutine);  // Stop the coroutine
         }
     }
 }
