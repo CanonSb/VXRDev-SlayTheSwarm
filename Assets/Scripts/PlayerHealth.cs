@@ -1,6 +1,8 @@
 using System.Collections;
 using TMPro;
+using Unity.Profiling;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public TMP_Text hpText;
 
     public GameObject hurtOverlay;
+    public GameObject deathOverlay;
 
 
     // Start is called before the first frame update
@@ -15,7 +18,9 @@ public class PlayerHealth : MonoBehaviour
     {
         hpText.text = string.Format("{0}", hitPoints);
         if (hurtOverlay == null) hurtOverlay = GameObject.FindWithTag("HurtOverlay");
-        hurtOverlay.SetActive(false);
+        if (deathOverlay == null) deathOverlay = GameObject.FindWithTag("DeathOverlay");
+        hurtOverlay?.SetActive(false);
+        deathOverlay?.SetActive(false);
     }
 
 
@@ -23,7 +28,15 @@ public class PlayerHealth : MonoBehaviour
     {
         hitPoints -= 1;
         hpText.text = string.Format("{0}", hitPoints);
-        StartCoroutine(triggerHurtOverlay());
+        if (hitPoints <= 0) StartCoroutine(TriggerDeath());
+        else StartCoroutine(triggerHurtOverlay());
+    }
+
+    public IEnumerator TriggerDeath()
+    {
+        deathOverlay.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 
