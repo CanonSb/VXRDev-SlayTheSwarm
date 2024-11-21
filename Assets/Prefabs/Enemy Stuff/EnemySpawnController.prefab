@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 648012466276487195}
   m_Layer: 0
   m_Name: EnemySpawnController
-  m_TagString: Untagged
+  m_TagString: EnemySpawnController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
