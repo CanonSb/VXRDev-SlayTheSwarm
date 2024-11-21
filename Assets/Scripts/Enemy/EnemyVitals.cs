@@ -52,7 +52,7 @@ public class EnemyVitals : MonoBehaviour
         // Begin destroying remaining body parts
         DestroyRemainingParts();
         // Destroy this object containing everything after some time
-        StartCoroutine(DestroyParentAfterTime(10f));
+        Invoke("DestroyParent", 10f);
     }
 
     // Custom listener class to detect destruction of GameObjects
@@ -126,9 +126,8 @@ public class EnemyVitals : MonoBehaviour
         if (obj != null) Destroy(obj);
     }
 
-    private IEnumerator DestroyParentAfterTime(float time)
+    private void DestroyParent()
     {
-        yield return new WaitForSeconds(time);
         Destroy(gameObject);
     }
 }
