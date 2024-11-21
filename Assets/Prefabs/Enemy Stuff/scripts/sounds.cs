@@ -83,7 +83,7 @@ public class RandomAutoAudioPlayer : MonoBehaviour
             gruntAudioSource.Play();
 
             // Debug message
-            Debug.Log($"Playing grunt sound: {gruntAudioSource.clip.name} at volume: {gruntAudioSource.volume}");
+            // Debug.Log($"Playing grunt sound: {gruntAudioSource.clip.name} at volume: {gruntAudioSource.volume}");
         }
     }
 
@@ -97,13 +97,13 @@ public class RandomAutoAudioPlayer : MonoBehaviour
                 // Play the footsteps sound
                 footstepsAudioSource.loop = true; // Ensure the footsteps audio loops
                 footstepsAudioSource.Play();
-                Debug.Log("Playing footsteps sound.");
+                // Debug.Log("Playing footsteps sound.");
             }
             else if (agent.velocity.magnitude <= 0.1f && footstepsAudioSource.isPlaying)
             {
                 // Stop the footsteps sound if the agent is idle
                 footstepsAudioSource.Stop();
-                Debug.Log("Stopping footsteps sound.");
+                // Debug.Log("Stopping footsteps sound.");
             }
 
             // Small delay to reduce processing
