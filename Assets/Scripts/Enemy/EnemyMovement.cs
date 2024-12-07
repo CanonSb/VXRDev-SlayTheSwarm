@@ -15,6 +15,8 @@ public class EnemyMovement : MonoBehaviour
     private float attackRange = 2f;
     [SerializeField]
     private float idleTimeBeforeAttack = 1f;
+    [SerializeField]
+    private float animationSpeed = 1f;
 
     private bool isAttackCycleActive = false;
     private Coroutine attackCycleCoroutine = null;
@@ -28,6 +30,7 @@ public class EnemyMovement : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        if (animator != null) animator.speed = animationSpeed;
         target = Camera.main.transform; // Sets the target to the main camera's position
         hpController = GameObject.FindWithTag("GameController")?.GetComponent<PlayerHealth>();
 
@@ -103,7 +106,7 @@ public class EnemyMovement : MonoBehaviour
             animator.SetBool("isAttacking", false);
 
             // About how much time it takes for the sword to come down
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(0.8f / animationSpeed);
             if (isInAttackRange) 
             {
                 hpController.takeDamage();

@@ -155,7 +155,6 @@ public class EnemyVitals : MonoBehaviour
 
     public void SetAllCollidersState(bool state, List<MeshCollider> colliders)
     {
-        print(state);
         foreach (MeshCollider coll in colliders)
         {
             if (coll != null) coll.enabled = state;
