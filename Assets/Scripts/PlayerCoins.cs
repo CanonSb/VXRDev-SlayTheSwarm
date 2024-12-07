@@ -19,8 +19,15 @@ public class PlayerCoins : MonoBehaviour
         
     }
 
-    public void getCoin()
+    // Add a coin to player
+    public void AddCoin()
     {
         coins += 1;
+    }
+
+    // Return total number of coins
+    public int GetTotalCoins()
+    {
+        return coins;
     }
 }
