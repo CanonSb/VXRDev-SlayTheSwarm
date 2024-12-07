@@ -19,6 +19,7 @@ public class EnemyMovement : MonoBehaviour
     private bool isAttackCycleActive = false;
     private Coroutine attackCycleCoroutine = null;
     private bool isInAttackRange = false;
+    private Vector3 lastTargetPosition;
 
     private AudioSource goblinHitPlayerAudioSource;
     public GameObject goblinHitPlayerController;
@@ -38,14 +39,23 @@ public class EnemyMovement : MonoBehaviour
         if (agent && agent.enabled)
         {
             // Move the agent toward the target
-            agent.SetDestination(target.position);
+            UpdateAgentTarget();
 
             // Update animation parameters
             UpdateAnimator();
         }
     }
 
-    void UpdateAnimator()
+    private void UpdateAgentTarget()
+    {
+        if (Vector3.Distance(target.position, lastTargetPosition) > 0.1f) // Threshold to avoid excessive updates
+        {
+            agent.SetDestination(target.position);
+            lastTargetPosition = target.position;
+        }
+    }
+
+    private void UpdateAnimator()
     {
         if (!animator) return;
         // Check if the agent is moving
@@ -57,35 +67,25 @@ public class EnemyMovement : MonoBehaviour
         isInAttackRange = distanceToTarget <= attackRange;
 
         // Handle attack cycle
-        if (isInAttackRange && !isRunning)
+        if (isInAttackRange && !isRunning && !isAttackCycleActive)
         {
             // Start attack cycle if not already active
-            if (!isAttackCycleActive)
+            if (attackCycleCoroutine == null)
             {
-                if (attackCycleCoroutine != null)
-                {
-                    StopCoroutine(attackCycleCoroutine);
-                }
                 attackCycleCoroutine = StartCoroutine(AttackCycle());
             }
         }
-        else
+        // Stop attack cycle if out of range or moving
+        else if ((!isInAttackRange || isRunning) && attackCycleCoroutine != null)
         {
-            // Stop attack cycle if out of range or moving
-            if (isAttackCycleActive)
-            {
-                if (attackCycleCoroutine != null)
-                {
-                    StopCoroutine(attackCycleCoroutine);
-                    attackCycleCoroutine = null;
-                }
-                isAttackCycleActive = false;
-                animator.SetBool("isAttacking", false);
-            }
+            StopCoroutine(attackCycleCoroutine);
+            attackCycleCoroutine = null;
+            isAttackCycleActive = false;
+            animator.SetBool("isAttacking", false);
         }
     }
 
-    IEnumerator AttackCycle()
+    private IEnumerator AttackCycle()
     {
         
         isAttackCycleActive = true;

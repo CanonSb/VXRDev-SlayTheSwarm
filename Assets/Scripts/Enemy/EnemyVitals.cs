@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
+
 
 // using UnityEditor.Animations;
 using UnityEngine;
@@ -13,17 +15,23 @@ public class EnemyVitals : MonoBehaviour
     public GameObject highestParentObj;
 
     private List<GameObject> enemyParts;
+    private List<MeshCollider> enemyColliders;
     private EnemyMovement movement;
 
-    // Start is called before the first frame update
     void Start()
     {
+        // Set variables
         if (agent == null) agent = GetComponent<NavMeshAgent>();
         enemyParts = new List<GameObject>();
+        enemyColliders = new List<MeshCollider>();
         movement = GetComponent<EnemyMovement>();
-        AddAllChildrenAsEnemyParts(highestParentObj.transform);
 
-        // Add event listeners for each GameObject in the list
+        // Startup Functions
+        AddAllChildrenAsEnemyParts(highestParentObj.transform);
+        AddAllPartColliders(enemyParts);
+        StartCoroutine(CheckTargetDistance());
+
+        // Add event listeners for each GameObject in the vitals list
         foreach (GameObject obj in vitalObjects)
         {
             if (obj != null)
@@ -130,4 +138,45 @@ public class EnemyVitals : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+
+
+    // #region COLLIDER STUFF
+
+    private void AddAllPartColliders(List<GameObject> parts)
+    {
+        foreach (GameObject part in parts)
+        {
+            MeshCollider coll = null;
+            if (part != null) coll = part.GetComponent<MeshCollider>();
+            if (coll != null) enemyColliders.Add(coll);
+        }
+    }
+
+    public void SetAllCollidersState(bool state, List<MeshCollider> colliders)
+    {
+        print(state);
+        foreach (MeshCollider coll in colliders)
+        {
+            if (coll != null) coll.enabled = state;
+        }
+    }
+
+    // Only enable enemy colliders if they are close to the player to try and reduce lag
+    private IEnumerator CheckTargetDistance()
+    {
+        while (true)
+        {
+            if (gameObject == null) break;
+            if (agent.destination != null)
+            {
+                float distanceToTarget = Vector3.Distance(transform.position, agent.destination);
+                if (distanceToTarget < 2) SetAllCollidersState(true, enemyColliders);
+                else SetAllCollidersState(false, enemyColliders);                
+            }
+            yield return new WaitForSeconds(0.1f);            
+        } 
+    }
+
+    // #endregion
 }

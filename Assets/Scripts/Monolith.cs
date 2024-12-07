@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Monolith : MonoBehaviour
 {
@@ -24,12 +23,15 @@ public class Monolith : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnDestroy()
     {
-        gameController.SetActive(true);
-        enemySpawner.SetActive(true);
+        gameController?.SetActive(true);
+        enemySpawner?.SetActive(true);
     }
 }
