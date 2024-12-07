@@ -167,7 +167,7 @@ public class EnemyVitals : MonoBehaviour
         while (true)
         {
             if (gameObject == null) break;
-            if (agent.destination != null)
+            if (agent.destination != null && agent.enabled)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, agent.destination);
                 if (distanceToTarget < 2) SetAllCollidersState(true, enemyColliders);
