@@ -43,7 +43,7 @@ public class EnemyVitals : MonoBehaviour
     }
 
     // Callback function when any monitored GameObject is destroyed
-    private void OnGameObjectDestroyed(GameObject destroyedObject)
+    public void OnGameObjectDestroyed(GameObject destroyedObject)
     {
         if (destroyedObject == null) return;
         // Remove the listeners attached to the children before destroying the parent
@@ -167,6 +167,9 @@ public class EnemyVitals : MonoBehaviour
         while (true)
         {
             if (gameObject == null) break;
+            // Attempt to update collider states if agent is still enabled and has destination
+            // TODO: maybe change this to be based off distance from sword rather than agent.destination (player)
+            //       and have a better way to check if goblin is marked for death
             if (agent.destination != null && agent.enabled)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, agent.destination);

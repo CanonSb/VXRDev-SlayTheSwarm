@@ -8,6 +8,7 @@ TagManager:
   - HurtOverlay
   - EnemySpawnController
   - DeathOverlay
+  - Goblin
   layers:
   - Default
   - TransparentFX

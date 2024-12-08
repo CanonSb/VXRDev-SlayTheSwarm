@@ -582,6 +582,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5939323884250811761, guid: 5de1c672668732641bfe4284ddd07f29,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14
+      objectReference: {fileID: 0}
     - target: {fileID: 7357934325166721451, guid: 5de1c672668732641bfe4284ddd07f29,
         type: 3}
       propertyPath: m_Pivot.x
@@ -640,22 +645,22 @@ PrefabInstance:
     - target: {fileID: 7357934325166721451, guid: 5de1c672668732641bfe4284ddd07f29,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.965926
+      value: 0.9659259
       objectReference: {fileID: 0}
     - target: {fileID: 7357934325166721451, guid: 5de1c672668732641bfe4284ddd07f29,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.2588186
+      value: -0.258819
       objectReference: {fileID: 0}
     - target: {fileID: 7357934325166721451, guid: 5de1c672668732641bfe4284ddd07f29,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7357934325166721451, guid: 5de1c672668732641bfe4284ddd07f29,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7357934325166721451, guid: 5de1c672668732641bfe4284ddd07f29,
         type: 3}
@@ -1090,9 +1095,32 @@ PrefabInstance:
       objectReference: {fileID: 394403739}
     - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
         type: 3}
+      propertyPath: goblinRed
+      value: 
+      objectReference: {fileID: 8916993036407602440, guid: 9435b35c375a4d8408f7fdca27a938f6,
+        type: 3}
+    - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
+        type: 3}
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1719317131}
+    - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
+        type: 3}
+      propertyPath: goblinGreen
+      value: 
+      objectReference: {fileID: 8916993036407602440, guid: cf39aeb7930ccaa489151513bbfb4a8b,
+        type: 3}
+    - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
+        type: 3}
+      propertyPath: goblinYellow
+      value: 
+      objectReference: {fileID: 8916993036407602440, guid: ea19d6fb07426f34aad8f0e5d3b2aab2,
+        type: 3}
+    - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
+        type: 3}
+      propertyPath: spawnIntervals.Array.size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8619435632481538712, guid: 40c08cc91f3769640a59bd534818d1aa,
         type: 3}
       propertyPath: m_Name

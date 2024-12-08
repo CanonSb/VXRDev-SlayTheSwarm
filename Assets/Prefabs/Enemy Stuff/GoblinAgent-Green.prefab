@@ -2859,7 +2859,7 @@ GameObject:
   - component: {fileID: 6262455494148421712}
   m_Layer: 0
   m_Name: GoblinAgent-Green
-  m_TagString: Untagged
+  m_TagString: Goblin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
