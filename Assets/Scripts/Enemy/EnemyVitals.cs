@@ -42,6 +42,7 @@ public class EnemyVitals : MonoBehaviour
         }
     }
 
+    // TODO: Disable goblin audio sources as well upon death
     // Callback function when any monitored GameObject is destroyed
     public void OnGameObjectDestroyed(GameObject destroyedObject)
     {

@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; // For Unity UI Text
+using UnityEngine.UI; 
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 
 public class WaveController : MonoBehaviour
 {
-    // public Text timerText;  // For UnityEngine.UI.Text
-    public TMP_Text timerText; // Uncomment if using TextMeshPro
+    public TMP_Text timerText;
+    public Slider waveBar;
     public int waveNum;
     public EnemySpawner spawner;
 
@@ -18,13 +18,19 @@ public class WaveController : MonoBehaviour
     public GameObject goblinRed;
 
     private float _elapsedTime = 0;
+    private float _waveTime = 0;
     private Coroutine enemySpawning;
 
+    void Awake()
+    {
+        StartNextWave();
+    }
 
     void Update()
     {
         // Increment the elapsed time
         _elapsedTime += Time.deltaTime;
+        _waveTime += Time.deltaTime;
 
         // Update functions
         UpdateTimerText();
@@ -51,17 +57,28 @@ public class WaveController : MonoBehaviour
         int displayMinutes = Mathf.FloorToInt(_elapsedTime / 60);
         int displaySeconds = Mathf.FloorToInt(_elapsedTime % 60);
 
+        float wavePercentage = Mathf.Min(1f, _waveTime / 60f);
+
         // Format the text
-        timerText.text = string.Format("{0:00}:{1:00}<br><size=40%>wave {2}</size>", displayMinutes, displaySeconds, waveNum);
+        timerText.text = string.Format("wave {0}               {1:00}:{2:00}", waveNum, displayMinutes, displaySeconds);
+        waveBar.value = wavePercentage;
     }
 
     // Start next wave and end after duration
     public void StartNextWave()
     {
+        // Stop enemy spawning if skipping through waves
+        if (enemySpawning != null) EndWave();
+        
+        // increment wave num and reset wave timer
         float duration = 60f;
         waveNum++;
+        _waveTime = 0;
+
         print(string.Format("Starting wave {0}.", waveNum));
+        // Start coroutine to update wave settings
         StartCoroutine(UpdateWaveOverTime(duration));
+        // Start enemy spawning coroutine
         enemySpawning = StartCoroutine(spawner.SpawnEnemies());
     }
 
