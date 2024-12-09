@@ -45,6 +45,7 @@ public class WaveController : MonoBehaviour
                 EnemyVitals vitals = enemy.GetComponent<EnemyVitals>();
                 if (vitals != null) vitals.OnGameObjectDestroyed(enemy);
             }
+            TriggerCatapultAttacks();
         }
     }
 
@@ -96,12 +97,12 @@ public class WaveController : MonoBehaviour
         {
             // Start easy with green
             case 1:
+                SpawnCatapults();
                 spawner.enemyList = new List<GameObject> {goblinGreen};
                 spawner.spawnWeights = new List<int> {100};
                 spawner.spawnInterval = 3.25f;
                 yield return new WaitForSeconds(duration / 2);
-                SpawnCatapults();
-
+            
                 spawner.spawnInterval = 3f;
                 yield return new WaitForSeconds(duration / 2);
                 break;
@@ -160,6 +161,13 @@ public class WaveController : MonoBehaviour
         foreach (GameObject cat in catapults)
         {
             cat.SetActive(true);
+        }
+    }
+    private void TriggerCatapultAttacks()
+    {
+        foreach (GameObject cat in catapults)
+        {
+            if (cat != null && cat.activeSelf) cat.GetComponent<Catapult>().Attack();
         }
     }
 }
