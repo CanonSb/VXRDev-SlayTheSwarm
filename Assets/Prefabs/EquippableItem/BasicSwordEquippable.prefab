@@ -211,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 2730600258283296925}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: -1.99, z: -0}
+  m_LocalPosition: {x: -0, y: -3.13, z: -0}
   m_LocalScale: {x: 0.050000004, y: 0.049999997, z: 0.050000004}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -529,12 +529,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d908445c1bdf9a442ae27dc225aa0603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSlicePoint: {fileID: 8258136894672573561, guid: a7eb09aea64cd8d4dbd96756e4557837,
-    type: 3}
-  endSlicePoint: {fileID: 8712902256876756848, guid: a7eb09aea64cd8d4dbd96756e4557837,
-    type: 3}
-  velocityEstimator: {fileID: 7965732137590205900, guid: a7eb09aea64cd8d4dbd96756e4557837,
-    type: 3}
+  startSlicePoint: {fileID: 2845128674573471126}
+  endSlicePoint: {fileID: 3245781159563347615}
+  velocityEstimator: {fileID: 4281464849776604195}
   sliceableLayer:
     serializedVersion: 2
     m_Bits: 64
