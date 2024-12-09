@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class WaveController : MonoBehaviour
 {
@@ -51,6 +52,8 @@ public class WaveController : MonoBehaviour
 
     private void UpdateTimerText()
     {
+        // Don't start counting until game is started
+        if (waveNum < 1) return;
         // Calculate minutes and seconds
         int displayMinutes = Mathf.FloorToInt(_elapsedTime / 60);
         int displaySeconds = Mathf.FloorToInt(_elapsedTime % 60);
