@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RandomAutoAudioPlayer : MonoBehaviour
+public class GoblinSounds : MonoBehaviour
 {
     // Array to hold your audio clips
     public AudioClip[] audioClips;
