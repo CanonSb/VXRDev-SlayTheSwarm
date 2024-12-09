@@ -16,6 +16,8 @@ public class WaveController : MonoBehaviour
     public GameObject goblinGreen;
     public GameObject goblinYellow;
     public GameObject goblinRed;
+    [Header("Catapult Array")]
+    public GameObject[] catapults;
 
     private float _elapsedTime = 0;
     private float _waveTime = 0;
@@ -98,6 +100,7 @@ public class WaveController : MonoBehaviour
                 spawner.spawnWeights = new List<int> {100};
                 spawner.spawnInterval = 3.25f;
                 yield return new WaitForSeconds(duration / 2);
+                SpawnCatapults();
 
                 spawner.spawnInterval = 3f;
                 yield return new WaitForSeconds(duration / 2);
@@ -149,5 +152,14 @@ public class WaveController : MonoBehaviour
                 break;
         }
         EndWave();
+    }
+
+
+    private void SpawnCatapults()
+    {
+        foreach (GameObject cat in catapults)
+        {
+            cat.SetActive(true);
+        }
     }
 }

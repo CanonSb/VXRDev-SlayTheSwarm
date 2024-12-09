@@ -122,6 +122,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &157972348 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2416486135961275099, guid: c946e9815ac94424e80a59849a026602,
+    type: 3}
+  m_PrefabInstance: {fileID: 8298239846109338890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &233641137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -906,6 +912,12 @@ CapsuleCollider:
     type: 3}
   m_PrefabInstance: {fileID: 526586138}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &746884192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 488685527986121084, guid: c946e9815ac94424e80a59849a026602,
+    type: 3}
+  m_PrefabInstance: {fileID: 8298239846109338890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &928605339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1121,6 +1133,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8916993036407602440, guid: ea19d6fb07426f34aad8f0e5d3b2aab2,
         type: 3}
+    - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
+        type: 3}
+      propertyPath: catapults.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
+        type: 3}
+      propertyPath: catapults.Array.data[0]
+      value: 
+      objectReference: {fileID: 746884192}
+    - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
+        type: 3}
+      propertyPath: catapults.Array.data[1]
+      value: 
+      objectReference: {fileID: 157972348}
+    - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
+        type: 3}
+      propertyPath: catapults.Array.data[2]
+      value: 
+      objectReference: {fileID: 1719535614}
     - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
         type: 3}
       propertyPath: spawnIntervals.Array.size
@@ -2052,6 +2084,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1599215643}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1719535614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4809336970040963730, guid: c946e9815ac94424e80a59849a026602,
+    type: 3}
+  m_PrefabInstance: {fileID: 8298239846109338890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2037725552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2263,10 +2301,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 488685527986121084, guid: c946e9815ac94424e80a59849a026602,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2333713342385436756, guid: c946e9815ac94424e80a59849a026602,
         type: 3}
       propertyPath: m_Name
       value: Catapults&Positions
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416486135961275099, guid: c946e9815ac94424e80a59849a026602,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2684161675230718461, guid: c946e9815ac94424e80a59849a026602,
         type: 3}
@@ -2318,6 +2366,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2865576264887151371, guid: c946e9815ac94424e80a59849a026602,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6b5947fb637b6de43a01fcd85f6b9d6b, type: 2}
+    - target: {fileID: 4809336970040963730, guid: c946e9815ac94424e80a59849a026602,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968514126502597442, guid: c946e9815ac94424e80a59849a026602,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 34c50eff707d71e42935c7b5a9ec9b11, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

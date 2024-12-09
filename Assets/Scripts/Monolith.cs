@@ -33,6 +33,6 @@ public class Monolith : MonoBehaviour
 
     void OnDestroy()
     {
-        _waveController?.StartNextWave();
+        if (_waveController != null) _waveController.StartNextWave();
     }
 }
