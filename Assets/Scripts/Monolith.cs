@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class Monolith : MonoBehaviour
 {
     public GameObject gameController;
+    private WaveController _waveController;
     public GameObject enemySpawner;
     public GameObject hurtOverlay;
     public GameObject deathOverlay;
@@ -13,6 +14,8 @@ public class Monolith : MonoBehaviour
     {
         
         if (gameController == null) gameController = GameObject.FindWithTag("GameController");
+        if (gameController != null) _waveController = gameController.GetComponent<WaveController>();
+
         if (hurtOverlay == null) hurtOverlay = GameObject.FindWithTag("HurtOverlay");
         if (deathOverlay == null) deathOverlay = GameObject.FindWithTag("DeathOverlay");
         hurtOverlay.SetActive(false);
@@ -30,6 +33,6 @@ public class Monolith : MonoBehaviour
 
     void OnDestroy()
     {
-        gameController?.SetActive(true);
+        _waveController?.StartNextWave();
     }
 }

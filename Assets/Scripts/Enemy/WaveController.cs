@@ -21,11 +21,6 @@ public class WaveController : MonoBehaviour
     private float _waveTime = 0;
     private Coroutine enemySpawning;
 
-    void Awake()
-    {
-        StartNextWave();
-    }
-
     void Update()
     {
         // Increment the elapsed time
@@ -35,12 +30,12 @@ public class WaveController : MonoBehaviour
         // Update functions
         UpdateTimerText();
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (Keyboard.current.enterKey.wasPressedThisFrame)
         {
             StartNextWave();
         }
 
-        if (Keyboard.current.enterKey.wasPressedThisFrame)
+        if (Keyboard.current.deleteKey.wasPressedThisFrame)
         {
             GameObject[] spawnedEnemies = GameObject.FindGameObjectsWithTag("Goblin");
             foreach (GameObject enemy in spawnedEnemies)
