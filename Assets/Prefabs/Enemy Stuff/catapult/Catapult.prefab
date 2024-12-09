@@ -782,6 +782,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4823303685901212109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3751016793372924218}
+  m_Layer: 0
+  m_Name: RockStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3751016793372924218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4823303685901212109}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.378, y: 6.563, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8485591899461299905}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4841422511749549238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,6 +1739,7 @@ Transform:
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 3751016793372924218}
   - {fileID: 3590607981792623386}
   - {fileID: 6980930543794719682}
   - {fileID: 8451163399063442628}
@@ -1760,6 +1792,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333339e4b2f7d4546844bf2f005b2d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rock: {fileID: 8009809079776710968, guid: d638ec8125031c043b14499fef5fe1ff, type: 3}
+  attackAreaIndicator: {fileID: 7614989209756964805, guid: d26784ac80e0182429ab1545f982ffa3,
+    type: 3}
+  rockZone: {fileID: 2483096720754182814, guid: 394ee3f3d76951c49a77baaad740133e,
+    type: 3}
+  rockStartPoint: {fileID: 3751016793372924218}
+  rockEndPoint: {fileID: 0}
+  arcHeight: 16
+  duration: 3
+  timeBeforeAttack: 3
 --- !u!1 &9219819715552960048
 GameObject:
   m_ObjectHideFlags: 0

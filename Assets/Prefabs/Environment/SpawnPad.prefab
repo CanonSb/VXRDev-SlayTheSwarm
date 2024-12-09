@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 5698469693289309776}
   - component: {fileID: 4170565039327805248}
   - component: {fileID: 3649950593739703457}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: SpawnPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
