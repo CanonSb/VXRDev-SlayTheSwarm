@@ -39,7 +39,7 @@ public class CoinTracking : MonoBehaviour
         {
             Destroy(coin);
 
-            playerCoins.AddCoin();
+            playerCoins.EarnCoins(1);
         }
     }
 }
