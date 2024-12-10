@@ -109,7 +109,7 @@ public class EnemyMovement : MonoBehaviour
             yield return new WaitForSeconds(0.8f / animationSpeed);
             if (isInAttackRange) 
             {
-                hpController.takeDamage();
+                hpController.takeDamage(1);
                 goblinHitPlayerAudioSource.Play();
             }
         }

@@ -33,7 +33,7 @@ public class WarningIndicator : MonoBehaviour
         {
             Vector3 direction = player.position - transform.position;
             direction.y = 0; // Keep the canvas level by ignoring vertical rotation
-            transform.rotation = Quaternion.LookRotation(direction);
+            if (direction != Vector3.zero) transform.rotation = Quaternion.LookRotation(direction);
         }
     }
 }

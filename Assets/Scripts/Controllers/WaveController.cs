@@ -46,7 +46,7 @@ public class WaveController : MonoBehaviour
                 EnemyVitals vitals = enemy.GetComponent<EnemyVitals>();
                 if (vitals != null) vitals.OnGameObjectDestroyed(enemy);
             }
-            TriggerCatapultAttacks();
+            StartCoroutine(TriggerCatapultAttacks());
         }
     }
 
@@ -161,16 +161,22 @@ public class WaveController : MonoBehaviour
 
     private void SpawnCatapults()
     {
+        if (catapults == null || catapults.Length == 0) return;
         foreach (GameObject cat in catapults)
         {
             cat.SetActive(true);
         }
     }
-    private void TriggerCatapultAttacks()
+    private IEnumerator TriggerCatapultAttacks()
     {
+        if (catapults == null || catapults.Length == 0) yield break;
+        // Set a random catapult to target the player
+        catapults[Random.Range(0, catapults.Length)].GetComponent<Catapult>().targetPlayer = true;
+        // Trigger the attack function for each catapult
         foreach (GameObject cat in catapults)
         {
             if (cat != null && cat.activeSelf) cat.GetComponent<Catapult>().Attack();
+            yield return new WaitForSeconds(Random.Range(0.2f, 0.5f));
         }
     }
 }

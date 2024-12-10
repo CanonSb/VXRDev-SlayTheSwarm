@@ -24,9 +24,9 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    public void takeDamage()
+    public void takeDamage(int dmg)
     {
-        hitPoints -= 1;
+        hitPoints -= dmg;
         hpText.text = string.Format("{0}", hitPoints);
         if (hitPoints <= 0) StartCoroutine(TriggerDeath());
         else StartCoroutine(triggerHurtOverlay());

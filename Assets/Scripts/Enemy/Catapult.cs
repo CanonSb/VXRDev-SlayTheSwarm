@@ -17,6 +17,8 @@ public class Catapult : MonoBehaviour
     public float duration = 3f; // Time it takes to reach the target
     public float timeBeforeAttack = 3f;
 
+    public bool targetPlayer = false;
+
     private float timeElapsed = 0f;
     private Animator _animator;
     private Coroutine atkCoroutine;
@@ -81,24 +83,37 @@ public class Catapult : MonoBehaviour
             // Calculate vertical position based on an arc (parabola)
             float verticalPos = Mathf.Lerp(rockStartPoint.position.y, rockEndPoint.position.y, t) + arcHeight * Mathf.Sin(t * Mathf.PI);
             // Set the object's position
-            _activeRock.transform.position = new Vector3(horizontalPos.x, verticalPos, horizontalPos.z);
+            if (_activeRock != null) _activeRock.transform.position = new Vector3(horizontalPos.x, verticalPos, horizontalPos.z);
 
             yield return null;
         }
 
         // Destroy rock and indicator once finished
-        Destroy(_activeRock);
-        Destroy(_activeIndicator);
+        if (_activeRock != null) Destroy(_activeRock);
+        if (_activeIndicator != null) Destroy(_activeIndicator);
     }
 
 
     private Vector3 GetRandomPointInBounds(Bounds bounds)
     {
-        float x = Random.Range(bounds.min.x, bounds.max.x);
-        float z = Random.Range(bounds.min.z, bounds.max.z);
+        float xVal = 0;
+        float zVal = 0;
+
+        if (targetPlayer)
+        {
+            xVal = Camera.main.transform.position.x;
+            zVal = Camera.main.transform.position.z;
+            targetPlayer = false;
+        }
+        else
+        {
+            xVal = Random.Range(bounds.min.x, bounds.max.x);
+            zVal = Random.Range(bounds.min.z, bounds.max.z);            
+        }
 
         // Start the point slightly above the max Y bound to ensure the raycast hits the ground
-        Vector3 randomPoint = new Vector3(x, bounds.max.y + 1, z);
+        Vector3 randomPoint = new Vector3(xVal, bounds.max.y + 1, zVal);
+        // Layers to Ignore (This is working opposite of how I think it should)
         int layerMask = LayerMask.NameToLayer("RockTargetZone");
 
         // Raycast downwards to find the ground
@@ -108,6 +123,6 @@ public class Catapult : MonoBehaviour
         }
 
         // If raycast fails, return a default safe position (e.g., center of bounds)
-        return new Vector3(x, bounds.min.y, z);
+        return new Vector3(xVal, bounds.min.y, zVal);
     }
 }
