@@ -14,21 +14,23 @@ public class EnemyVitals : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject highestParentObj;
 
-    private List<GameObject> enemyParts;
-    private List<MeshCollider> enemyColliders;
-    private EnemyMovement movement;
+    private List<GameObject> _enemyParts;
+    private List<MeshCollider> _enemyColliders;
+    private EnemyMovement _movement;
+    private GoblinSounds _goblinSounds;
 
     void Start()
     {
         // Set variables
         if (agent == null) agent = GetComponent<NavMeshAgent>();
-        enemyParts = new List<GameObject>();
-        enemyColliders = new List<MeshCollider>();
-        movement = GetComponent<EnemyMovement>();
+        _enemyParts = new List<GameObject>();
+        _enemyColliders = new List<MeshCollider>();
+        _movement = GetComponent<EnemyMovement>();
+        _goblinSounds = GetComponent<GoblinSounds>();
 
         // Startup Functions
         AddAllChildrenAsEnemyParts(highestParentObj.transform);
-        AddAllPartColliders(enemyParts);
+        AddAllPartColliders(_enemyParts);
         StartCoroutine(CheckTargetDistance());
 
         // Add event listeners for each GameObject in the vitals list
@@ -55,9 +57,10 @@ public class EnemyVitals : MonoBehaviour
                 Destroy(obj.GetComponent<DestroyListener>());
             }
         }
-        // Dsiable agent and movement
+        // Dsiable agent, movement, and goblin sounds script
         if (agent != null && agent.enabled) agent.enabled = false;
-        if (movement != null && movement.enabled) movement.enabled = false;
+        if (_movement != null && _movement.enabled) _movement.enabled = false;
+        if (_goblinSounds != null && _goblinSounds.enabled) _goblinSounds.enabled = false;
         // Begin destroying remaining body parts
         DestroyRemainingParts();
         // Destroy this object containing everything after some time
@@ -86,7 +89,7 @@ public class EnemyVitals : MonoBehaviour
     // Function to unparent and destroy all children and their descendants recursively
     private void AddAllChildrenAsEnemyParts(Transform parent)
     {
-        enemyParts.Add(parent.gameObject);
+        _enemyParts.Add(parent.gameObject);
         // Iterate through all child objects of the current parent transform
         foreach (Transform child in parent)
         {
@@ -96,7 +99,7 @@ public class EnemyVitals : MonoBehaviour
 
     private void DestroyRemainingParts()
     {
-        foreach (GameObject part in enemyParts)
+        foreach (GameObject part in _enemyParts)
         {
             if (part == null || !part.activeInHierarchy) continue;
             if (part.tag != "WillBeDestroyed")
@@ -150,7 +153,7 @@ public class EnemyVitals : MonoBehaviour
         {
             MeshCollider coll = null;
             if (part != null) coll = part.GetComponent<MeshCollider>();
-            if (coll != null) enemyColliders.Add(coll);
+            if (coll != null) _enemyColliders.Add(coll);
         }
     }
 
@@ -174,8 +177,8 @@ public class EnemyVitals : MonoBehaviour
             if (agent.destination != null && agent.enabled)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, agent.destination);
-                if (distanceToTarget < 2) SetAllCollidersState(true, enemyColliders);
-                else SetAllCollidersState(false, enemyColliders);                
+                if (distanceToTarget < 2) SetAllCollidersState(true, _enemyColliders);
+                else SetAllCollidersState(false, _enemyColliders);                
             }
             yield return new WaitForSeconds(0.1f);            
         } 
