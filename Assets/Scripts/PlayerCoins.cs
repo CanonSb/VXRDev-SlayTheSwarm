@@ -10,7 +10,8 @@ public class PlayerCoins : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        coins = 10;
+        Debug.Log($"PlayerCoins Start: Player has {coins}.");
     }
 
     // Update is called once per frame
@@ -19,15 +20,41 @@ public class PlayerCoins : MonoBehaviour
         
     }
 
-    // Add a coin to player
-    public void AddCoin()
+    /// <returns>Interger</returns>
+    public int GetCoinBalance()
     {
-        coins += 1;
+        Debug.Log($"GetCoinBalance: Player has {coins}.");
+        return coins;
     }
 
-    // Return total number of coins
-    public int GetTotalCoins()
+    /// <summary>
+    /// Adds the specified number of coins to the player's total.
+    /// </summary>
+    /// <returns>Void</returns>
+    public void EarnCoins(int num)
     {
-        return coins;
+        coins += num;
+        Debug.Log($"EarnCoins: Player has {coins}.");
+    }
+
+    /// <summary>
+    /// Subtracts the specified number of coins to the player's total.
+    /// </summary>
+    /// <returns>Boolean</returns>
+    public bool SpendCoins(int cost)
+    {
+        int balance = GetCoinBalance();
+        if (balance >= cost)
+        {
+            Debug.Log($"SpendCoins: Player has enough coins ({coins}).");
+            coins -= cost;
+            Debug.Log($"SpendCoins: Player new balance ({coins}).");
+            return true;
+        }
+        else
+        {
+            Debug.Log($"SpendCoins: Player has does not have enough coins ({coins}).");
+            return false;
+        }
     }
 }
