@@ -16,7 +16,7 @@ public class Catapult : MonoBehaviour
     public float arcHeight = 2f; // The height of the arc
     public float duration = 3f; // Time it takes to reach the target
     public float timeBeforeAttack = 3f;
-
+    public float landingScale = 1.5f;
     public bool targetPlayer = false;
 
     private float timeElapsed = 0f;
@@ -68,6 +68,8 @@ public class Catapult : MonoBehaviour
         // Instantiate Rock
         _activeRock = Instantiate(rock, rockStartPoint);
         _activeRock.transform.SetParent(null);
+        Vector3 initScale = _activeRock.transform.localScale;
+        Vector3 targetScale = initScale * landingScale;
 
         // Lerp rock to target position with an arc
         timeElapsed = 0f;
@@ -82,8 +84,14 @@ public class Catapult : MonoBehaviour
             Vector3 horizontalPos = Vector3.Lerp(rockStartPoint.position, rockEndPoint.position, t);
             // Calculate vertical position based on an arc (parabola)
             float verticalPos = Mathf.Lerp(rockStartPoint.position.y, rockEndPoint.position.y, t) + arcHeight * Mathf.Sin(t * Mathf.PI);
-            // Set the object's position
-            if (_activeRock != null) _activeRock.transform.position = new Vector3(horizontalPos.x, verticalPos, horizontalPos.z);
+            // Lerp scale
+            Vector3 newScale = Vector3.Lerp(initScale, targetScale, t);
+            // Set the object's position & scale
+            if (_activeRock != null)
+            {
+                _activeRock.transform.position = new Vector3(horizontalPos.x, verticalPos, horizontalPos.z);
+                _activeRock.transform.localScale = newScale;
+            }
 
             yield return null;
         }

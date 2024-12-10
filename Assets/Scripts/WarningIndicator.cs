@@ -34,6 +34,13 @@ public class WarningIndicator : MonoBehaviour
             Vector3 direction = player.position - transform.position;
             direction.y = 0; // Keep the canvas level by ignoring vertical rotation
             if (direction != Vector3.zero) transform.rotation = Quaternion.LookRotation(direction);
+
+            // If player is too close, put canvas underground to be out of the way
+            float distance = Vector3.Distance(transform.position, player.position);
+            if (distance < 1.5f)
+            {
+                transform.position = (Vector3.up * -100) + transform.position;
+            }
         }
     }
 }

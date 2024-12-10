@@ -37,5 +37,6 @@ public class CatapultRock : MonoBehaviour
     {
         _activePS = Instantiate(dustParticles, transform.position, dustParticles.transform.rotation);
         _activePS.Play();
+        Destroy(_activePS, 2);
     }
 }

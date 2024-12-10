@@ -100,7 +100,6 @@ public class WaveController : MonoBehaviour
         {
             // Start easy with green
             case 1:
-                SpawnCatapults();
                 spawner.enemyList = new List<GameObject> {goblinGreen};
                 spawner.spawnWeights = new List<int> {100};
                 spawner.spawnInterval = 3.25f;
@@ -121,10 +120,12 @@ public class WaveController : MonoBehaviour
                 break;
             // Yellow swarm
             case 3:
+                SpawnCatapults();
                 spawner.enemyList = new List<GameObject> {goblinGreen, goblinYellow};
                 spawner.spawnWeights = new List<int> {40, 60};
                 spawner.spawnInterval = 2.75f;
                 yield return new WaitForSeconds(duration / 2);
+                StartCoroutine(TriggerCatapultAttacks());
 
                 spawner.spawnWeights = new List<int> {0, 100};
                 spawner.spawnInterval = 2.5f;
@@ -136,6 +137,7 @@ public class WaveController : MonoBehaviour
                 spawner.spawnWeights = new List<int> {50, 30, 20};
                 spawner.spawnInterval = 2.5f;
                 yield return new WaitForSeconds(duration / 2);
+                StartCoroutine(TriggerCatapultAttacks());
 
                 spawner.spawnWeights = new List<int> {25, 35, 40};
                 spawner.spawnInterval = 2.25f;
@@ -147,6 +149,7 @@ public class WaveController : MonoBehaviour
                 spawner.spawnWeights = new List<int> {0, 0, 100};
                 spawner.spawnInterval = 2.25f;
                 yield return new WaitForSeconds(duration / 2);
+                StartCoroutine(TriggerCatapultAttacks());
 
                 spawner.spawnWeights = new List<int> {0, 30, 70};
                 spawner.spawnInterval = 2f;
