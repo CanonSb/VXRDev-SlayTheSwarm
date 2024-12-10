@@ -1022,6 +1022,11 @@ PrefabInstance:
       objectReference: {fileID: 1479256768}
     - target: {fileID: 8650865161460765521, guid: 3e7b59c856f384cb5ae0eee50be4b864,
         type: 3}
+      propertyPath: deathOverlay
+      value: 
+      objectReference: {fileID: 263982631}
+    - target: {fileID: 8650865161460765521, guid: 3e7b59c856f384cb5ae0eee50be4b864,
+        type: 3}
       propertyPath: enemySpawner
       value: 
       objectReference: {fileID: 394403738}

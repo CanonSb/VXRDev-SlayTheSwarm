@@ -10,6 +10,8 @@ using UnityEngine.AI;
 
 public class EnemyVitals : MonoBehaviour
 {
+    [Range(0, 1f)]
+    public float goldDropChance;
     public List<GameObject> vitalObjects;
     public NavMeshAgent agent;
     public GameObject highestParentObj;
@@ -49,6 +51,7 @@ public class EnemyVitals : MonoBehaviour
     public void OnGameObjectDestroyed(GameObject destroyedObject)
     {
         if (destroyedObject == null) return;
+
         // Remove the listeners attached to the children before destroying the parent
         foreach (GameObject obj in vitalObjects)
         {
@@ -57,7 +60,8 @@ public class EnemyVitals : MonoBehaviour
                 Destroy(obj.GetComponent<DestroyListener>());
             }
         }
-        // Dsiable agent, movement, and goblin sounds script
+
+        // Disable agent, movement, and goblin sounds script
         if (agent != null && agent.enabled) agent.enabled = false;
         if (_movement != null && _movement.enabled) _movement.enabled = false;
         if (_goblinSounds != null && _goblinSounds.enabled) 
@@ -65,10 +69,18 @@ public class EnemyVitals : MonoBehaviour
             _goblinSounds.StopCoroutines();
             _goblinSounds.enabled = false;
         }
+
         // Begin destroying remaining body parts
         DestroyRemainingParts();
         // Destroy this object containing everything after some time
         Invoke("DestroyParent", 10f);
+
+        // Drop gold
+        if (Random.value <= goldDropChance)
+        {
+            // TODO: Do gold drop here
+            // GameObject coin = Instantiate(placeholder, transform.position, placeholder.transform.rotation);
+        }
     }
 
     // Custom listener class to detect destruction of GameObjects
