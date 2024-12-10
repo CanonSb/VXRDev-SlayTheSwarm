@@ -88,12 +88,17 @@ public class WaveController : MonoBehaviour
     {
         print(string.Format("Wave {0} has ended.", waveNum));
         StopCoroutine(enemySpawning);
+
+        // !!! REMOVE WHEN DAY/NIGHT CYCLE IS INCORPORATED
+        StartNextWave();
     }
 
 
     // TODO: Waves are hard-coded for now. May change later to make it easier to edit them
     // Each wave is currently split into 3 segments
     // For simplicity the sum of all spawn weights will be 100
+
+    // TODO: Tweak wave difficulty and add more catapult attacks
     private IEnumerator UpdateWaveOverTime(float duration)
     {
         switch (waveNum)

@@ -60,7 +60,11 @@ public class EnemyVitals : MonoBehaviour
         // Dsiable agent, movement, and goblin sounds script
         if (agent != null && agent.enabled) agent.enabled = false;
         if (_movement != null && _movement.enabled) _movement.enabled = false;
-        if (_goblinSounds != null && _goblinSounds.enabled) _goblinSounds.enabled = false;
+        if (_goblinSounds != null && _goblinSounds.enabled) 
+        {
+            _goblinSounds.StopCoroutines();
+            _goblinSounds.enabled = false;
+        }
         // Begin destroying remaining body parts
         DestroyRemainingParts();
         // Destroy this object containing everything after some time
