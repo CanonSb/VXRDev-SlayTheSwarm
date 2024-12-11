@@ -1666,6 +1666,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317278375}
   m_CullTransparentMesh: 1
+--- !u!1 &1545865390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2496316945804116371, guid: 698b2faf5205f62479d60232da41e772,
+    type: 3}
+  m_PrefabInstance: {fileID: 1815124115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1702816497
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1783,7 +1789,7 @@ PrefabInstance:
     - target: {fileID: 253187498509610471, guid: 4f826e6813f47e5448cd0562f86cda63,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.8
       objectReference: {fileID: 0}
     - target: {fileID: 253187498509610471, guid: 4f826e6813f47e5448cd0562f86cda63,
         type: 3}
@@ -1793,7 +1799,7 @@ PrefabInstance:
     - target: {fileID: 253187498509610471, guid: 4f826e6813f47e5448cd0562f86cda63,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.13
+      value: 10.16
       objectReference: {fileID: 0}
     - target: {fileID: 253187498509610471, guid: 4f826e6813f47e5448cd0562f86cda63,
         type: 3}
@@ -1835,6 +1841,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4ae3054b15067554796fc87bc1847419, type: 2}
+    - target: {fileID: 3949170458268064168, guid: 4f826e6813f47e5448cd0562f86cda63,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6906593208518862271, guid: 4f826e6813f47e5448cd0562f86cda63,
         type: 3}
       propertyPath: m_Name
@@ -1848,6 +1859,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1722851499}
+    - targetCorrespondingSourceObject: {fileID: 6906593208518862271, guid: 4f826e6813f47e5448cd0562f86cda63,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1722851504}
   m_SourcePrefab: {fileID: 100100000, guid: 4f826e6813f47e5448cd0562f86cda63, type: 3}
 --- !u!1 &1722851498 stripped
 GameObject:
@@ -1868,9 +1883,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 1722851498}
+  xrRig: {fileID: 1545865390}
   player: {fileID: 777603581}
-  speed: 0.09
+  speed: 1.5
   dstrThresh: 0.5
+  playerCoins: {fileID: 0}
+--- !u!54 &1722851504
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722851498}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1815124115
 PrefabInstance:
   m_ObjectHideFlags: 0
