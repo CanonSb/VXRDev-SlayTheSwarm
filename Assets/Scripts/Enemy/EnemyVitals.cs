@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
+using UnityEditor;
+
 
 
 // using UnityEditor.Animations;
@@ -21,6 +23,8 @@ public class EnemyVitals : MonoBehaviour
     private List<MeshCollider> _enemyColliders;
     private EnemyMovement _movement;
     private GoblinSounds _goblinSounds;
+
+    private bool _goblinDestroyed = false;
 
     void Start()
     {
@@ -52,6 +56,8 @@ public class EnemyVitals : MonoBehaviour
     public void OnGameObjectDestroyed(GameObject destroyedObject)
     {
         if (destroyedObject == null) return;
+        if (_goblinDestroyed) return;
+        _goblinDestroyed = true;
 
         // Remove the listeners attached to the children before destroying the parent
         foreach (GameObject obj in vitalObjects)
@@ -75,12 +81,13 @@ public class EnemyVitals : MonoBehaviour
         DestroyRemainingParts();
         // Destroy this object containing everything after some time
         Invoke("DestroyParent", 10f);
+        print("destroyed");
 
         // Drop gold
         if (Random.value <= goldDropChance)
         {
             // TODO: Do gold drop here
-            GameObject coin = Instantiate(coinPrefab, destroyedObject.transform.position, Quaternion.identity);
+            GameObject coin = Instantiate(coinPrefab, destroyedObject.transform.position, coinPrefab.transform.rotation);
         }
     }
 
@@ -116,6 +123,7 @@ public class EnemyVitals : MonoBehaviour
 
     private void DestroyRemainingParts()
     {
+        // print("destroying parts");
         foreach (GameObject part in _enemyParts)
         {
             if (part == null || !part.activeInHierarchy) continue;

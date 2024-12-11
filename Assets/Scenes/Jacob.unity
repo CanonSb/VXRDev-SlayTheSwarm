@@ -882,6 +882,11 @@ PrefabInstance:
       objectReference: {fileID: 94975914}
     - target: {fileID: 2717167321799335452, guid: 40c08cc91f3769640a59bd534818d1aa,
         type: 3}
+      propertyPath: hitPoints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717167321799335452, guid: 40c08cc91f3769640a59bd534818d1aa,
+        type: 3}
       propertyPath: hurtOverlay
       value: 
       objectReference: {fileID: 1966834660}
@@ -1144,7 +1149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86d6f8055e7bf44ba6605d818016ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 9
+  coins: 15
   output: {fileID: 1317278377}
 --- !u!1 &986542983
 GameObject:

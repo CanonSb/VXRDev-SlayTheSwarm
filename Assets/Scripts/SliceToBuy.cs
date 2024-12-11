@@ -69,7 +69,6 @@ public class SliceToBuy : MonoBehaviour
 
     void OnDestroy()
     {
-        itemCost = 5;
         // Debug.Log($"STB OnDestroy: itemCost ({itemCost}).");
 
         // coinBalance = playerCoins.GetCoinBalance();
@@ -81,7 +80,7 @@ public class SliceToBuy : MonoBehaviour
             Debug.Log("STB OnDestroy: Item purchased");
             coinBalance = playerCoins.GetCoinBalance();
             // output.text = $"STB OnDestroy: Item Purchased new coinBalance ({coinBalance}).";
-            Debug.Log($"STB OnDestroy: new coinBalance ({coinBalance}).");
+            Debug.Log($"STB OnDestroy: coinBalance ({coinBalance}).");
         }
         else
         {

@@ -9,12 +9,14 @@ public class PlayerCoins : MonoBehaviour
     public int coins = 0;
     // Reference to Right Hand Text UI
     public TextMeshProUGUI output;
+    // Canvas text
+    public TMP_Text coinText;
 
     // Start is called before the first frame update
     void Start()
     {
         coins = 10;
-        Debug.Log($"PC PlayerCoins Start: Player has {coins}.");
+        // Debug.Log($"PC PlayerCoins Start: Player has {coins}.");
     }
 
     // Update is called once per frame
@@ -26,7 +28,7 @@ public class PlayerCoins : MonoBehaviour
     /// <returns>Interger</returns>
     public int GetCoinBalance()
     {
-        Debug.Log($"PC GetCoinBalance: Player has {coins}.");
+        // Debug.Log($"PC GetCoinBalance: Player has {coins}.");
         return coins;
     }
 
@@ -37,8 +39,9 @@ public class PlayerCoins : MonoBehaviour
     public void EarnCoins(int num)
     {
         coins += num;
-        Debug.Log($"PC EarnCoins: Player has {coins}.");
-        output.text = $"STB Player has {coins}.";
+        // Debug.Log($"PC EarnCoins: Player has {coins}.");
+        if (output != null) output.text = $"STB Player has {coins}.";
+        coinText.text = string.Format("{0}", coins);
     }
 
     /// <summary>
@@ -69,16 +72,19 @@ public class PlayerCoins : MonoBehaviour
         int balance = GetCoinBalance();
         int cost = itemCosts(itemName);
         Debug.Log($"STB OnDestroy: cost ({cost}).");
+
+        coinText.text = string.Format("{0}", balance);
+
         if (balance >= cost)
         {
-            Debug.Log($"PC SpendCoins: Player has enough coins ({coins}).");
+            // Debug.Log($"PC SpendCoins: Player has enough coins ({coins}).");
             coins -= cost;
-            Debug.Log($"PC SpendCoins: Player new balance ({coins}).");
+            // Debug.Log($"PC SpendCoins: Player new balance ({coins}).");
             return true;
         }
         else
         {
-            Debug.Log($"PC SpendCoins: Player has does not have enough coins ({coins}).");
+            // Debug.Log($"PC SpendCoins: Player has does not have enough coins ({coins}).");
             return false;
         }
     }
