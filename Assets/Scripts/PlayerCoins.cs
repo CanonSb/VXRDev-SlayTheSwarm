@@ -45,13 +45,36 @@ public class PlayerCoins : MonoBehaviour
     }
 
     /// <summary>
+    /// Gets the cost of item by name.
+    /// </summary>
+    /// <returns>Integer</returns>
+    private int itemCosts(string name)
+    {
+        // Store costs of purchasable items
+        var itemCostMapping = new Dictionary<string, int>
+        {
+            {"dagger", 5},
+            {"greatsword", 5},
+            {"shield", 5},
+            {"sword", 5}
+        };
+
+        // Return cost of item or an insanely high value if it's not found
+        return itemCostMapping.TryGetValue(name, out int cost) ? cost : 9999;
+    }
+
+    /// <summary>
     /// Subtracts the specified number of coins to the player's total.
     /// </summary>
     /// <returns>Boolean</returns>
-    public bool SpendCoins(int cost)
+    public bool SpendCoins(string itemName)
     {
         int balance = GetCoinBalance();
+        int cost = itemCosts(itemName);
+        Debug.Log($"STB OnDestroy: cost ({cost}).");
+
         coinText.text = string.Format("{0}", balance);
+
         if (balance >= cost)
         {
             // Debug.Log($"PC SpendCoins: Player has enough coins ({coins}).");

@@ -21,11 +21,17 @@ public class SliceToBuy : MonoBehaviour
     // Item cost
     public int itemCost;
 
+    // Item name
+    private string itemName;
+
     // Start is called before the first frame update
     void Start()
     {
         // Initialize coinBalance
         coinBalance = 0;
+
+        // Get item name
+        itemName = gameObject.name;
 
         if (gameController == null) gameController = GameObject.FindWithTag("GameController");
 
@@ -63,24 +69,23 @@ public class SliceToBuy : MonoBehaviour
 
     void OnDestroy()
     {
-        itemCost = 5;
-        Debug.Log($"STB OnDestroy: itemCost ({itemCost}).");
+        // Debug.Log($"STB OnDestroy: itemCost ({itemCost}).");
 
-        coinBalance = playerCoins.GetCoinBalance();
-        output.text = $"Player has {coinBalance} coins.";
-        Debug.Log($"STB OnDestroy: coinBalance ({coinBalance}).");
+        // coinBalance = playerCoins.GetCoinBalance();
+        // output.text = $"Player has {coinBalance} coins.";
+        // Debug.Log($"STB OnDestroy: coinBalance ({coinBalance}).");
 
-        if (playerCoins.SpendCoins(itemCost))
+        if (playerCoins.SpendCoins(itemName))
         {
             Debug.Log("STB OnDestroy: Item purchased");
             coinBalance = playerCoins.GetCoinBalance();
-            output.text = $"STB OnDestroy: Item Purchased new coinBalance ({coinBalance}).";
-            Debug.Log($"STB OnDestroy: new coinBalance ({coinBalance}).");
+            // output.text = $"STB OnDestroy: Item Purchased new coinBalance ({coinBalance}).";
+            Debug.Log($"STB OnDestroy: coinBalance ({coinBalance}).");
         }
         else
         {
-            Debug.Log("STB OnDestroy: Insufficient Balance!");
-            output.text = $"STB OnDestroy: Insufficient Balance! ({coinBalance})";
+            Debug.Log("STB OnDestroy: Insufficient Balance! ({coinBalance})");
+            // output.text = $"STB OnDestroy: Insufficient Balance! ({coinBalance})";
         }
     }
 }
