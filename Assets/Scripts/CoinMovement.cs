@@ -23,6 +23,9 @@ public class CoinTracking : MonoBehaviour
     // PlayerCoins script
     public PlayerCoins playerCoins;
 
+    // Coin life time
+    private float coinLifeTime = 60f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +52,8 @@ public class CoinTracking : MonoBehaviour
             Debug.LogError("CM playerCoins NULL!");
             return;
         }
+
+        Destroy(gameObject, coinLifeTime);
     }
 
     // Update is called once per frame
@@ -57,7 +62,7 @@ public class CoinTracking : MonoBehaviour
         // Move coin towards player
         coin.transform.position = Vector3.MoveTowards(coin.transform.position, xrRig.transform.position, speed * Time.fixedDeltaTime);
 
-        Debug.Log(Vector3.Distance(coin.transform.position, xrRig.transform.position));
+        // Debug.Log(Vector3.Distance(coin.transform.position, xrRig.transform.position));
 
         // Destroy coin once it reaches player
         if (Vector3.Distance(coin.transform.position, xrRig.transform.position) <= dstrThresh)
