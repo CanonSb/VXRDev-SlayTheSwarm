@@ -200,7 +200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2596313729686081084
 Transform:
   m_ObjectHideFlags: 0
@@ -812,6 +812,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1783448540466341527, guid: 84f7e873e83b0a640b4723687a32d6d7,
         type: 3}
+      propertyPath: itemCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783448540466341527, guid: 84f7e873e83b0a640b4723687a32d6d7,
+        type: 3}
       propertyPath: tableItem
       value: 
       objectReference: {fileID: 3739125382636923366}
@@ -1172,6 +1177,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8122610054512334991}
     m_Modifications:
+    - target: {fileID: 1542640862768319691, guid: 84f7e873e83b0a640b4723687a32d6d7,
+        type: 3}
+      propertyPath: m_text
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783448540466341527, guid: 84f7e873e83b0a640b4723687a32d6d7,
+        type: 3}
+      propertyPath: itemCost
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 1783448540466341527, guid: 84f7e873e83b0a640b4723687a32d6d7,
         type: 3}
       propertyPath: tableItem
@@ -1530,6 +1545,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3840886981496479775}
     m_Modifications:
+    - target: {fileID: 1783448540466341527, guid: 84f7e873e83b0a640b4723687a32d6d7,
+        type: 3}
+      propertyPath: itemCost
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1783448540466341527, guid: 84f7e873e83b0a640b4723687a32d6d7,
         type: 3}
       propertyPath: tableItem

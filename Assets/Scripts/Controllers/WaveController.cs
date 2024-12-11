@@ -162,6 +162,45 @@ public class WaveController : MonoBehaviour
                 spawner.spawnInterval = 2f;
                 yield return new WaitForSeconds(duration / 2);
                 break;
+            case 6:
+                spawner.enemyList = new List<GameObject> {goblinGreen, goblinYellow, goblinRed};
+                spawner.spawnWeights = new List<int> {33, 33, 33};
+                spawner.spawnInterval = 1.75f;
+                yield return new WaitForSeconds(duration / 2);
+                StartCoroutine(TriggerCatapultAttacks());
+
+                spawner.spawnWeights = new List<int> {33, 33, 33};
+                spawner.spawnInterval = 1.5f;
+                yield return new WaitForSeconds(duration / 2);
+                break;
+            case 7:
+                spawner.enemyList = new List<GameObject> {goblinGreen, goblinYellow, goblinRed};
+                spawner.spawnWeights = new List<int> {0, 0, 100};
+                spawner.spawnInterval = 1.5f;
+                yield return new WaitForSeconds(duration / 4);
+                StartCoroutine(TriggerCatapultAttacks());
+                yield return new WaitForSeconds(duration / 4);
+                spawner.spawnWeights = new List<int> {0, 0, 100};
+                spawner.spawnInterval = 1.25f;
+                StartCoroutine(TriggerCatapultAttacks());
+                yield return new WaitForSeconds(duration / 4);
+                StartCoroutine(TriggerCatapultAttacks());
+                yield return new WaitForSeconds(duration / 4);
+                break;
+            case 8:
+                spawner.enemyList = new List<GameObject> {goblinGreen, goblinYellow, goblinRed};
+                spawner.spawnWeights = new List<int> {0, 100, 0};
+                spawner.spawnInterval = 1f;
+                yield return new WaitForSeconds(duration / 4);
+                StartCoroutine(TriggerCatapultAttacks());
+                yield return new WaitForSeconds(duration / 4);
+                spawner.spawnWeights = new List<int> {0, 100, 0};
+                spawner.spawnInterval = 0.5f;
+                StartCoroutine(TriggerCatapultAttacks());
+                yield return new WaitForSeconds(duration / 4);
+                StartCoroutine(TriggerCatapultAttacks());
+                yield return new WaitForSeconds(duration / 4);
+                break;
             default:
                 break;
         }

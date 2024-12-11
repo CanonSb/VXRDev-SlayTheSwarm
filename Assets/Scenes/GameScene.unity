@@ -185,6 +185,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WandEquippable
       objectReference: {fileID: 0}
+    - target: {fileID: 3466088076072406493, guid: 57350c77e8f384d5682efb4e6ac71f87,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -978,7 +983,7 @@ PrefabInstance:
     - target: {fileID: 2717167321799335452, guid: 40c08cc91f3769640a59bd534818d1aa,
         type: 3}
       propertyPath: hitPoints
-      value: 9999
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2717167321799335452, guid: 40c08cc91f3769640a59bd534818d1aa,
         type: 3}
@@ -1150,7 +1155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86d6f8055e7bf44ba6605d818016ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 100
+  coins: 5
   output: {fileID: 0}
   coinText: {fileID: 1882205074}
 --- !u!1 &729534965 stripped
@@ -1222,6 +1227,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DaggerEquippable
       objectReference: {fileID: 0}
+    - target: {fileID: 3466088076072406493, guid: 665b24b4d8ad146c58e5ba9e5ad9bead,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1289,6 +1299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Monolith
+      objectReference: {fileID: 0}
+    - target: {fileID: 580600372806907100, guid: 3e7b59c856f384cb5ae0eee50be4b864,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8650865161460765521, guid: 3e7b59c856f384cb5ae0eee50be4b864,
         type: 3}
@@ -2079,7 +2094,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.13333334
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 66c66e48b4d407745888e7aa9901b9d6, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 5616e120f4e8ba8479fbaa4d1c5516db, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1774056961
 Transform:
@@ -2212,6 +2227,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: XR Setup Custom
+      objectReference: {fileID: 0}
+    - target: {fileID: 718276384459293589, guid: f2ba796e3048741eea8abd0a421b9d50,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3875509995204212121, guid: f2ba796e3048741eea8abd0a421b9d50,
         type: 3}
@@ -2544,6 +2564,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518431200045694841, guid: 5de1c672668732641bfe4284ddd07f29,
+        type: 3}
+      propertyPath: m_text
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8518431200045694841, guid: 5de1c672668732641bfe4284ddd07f29,
         type: 3}

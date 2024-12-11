@@ -31,6 +31,10 @@ public class CatapultRock : MonoBehaviour
             hpController.takeDamage(2);
             Destroy(gameObject);
         }
+        if (other.CompareTag("Shield"))
+        {
+            Destroy(gameObject);
+        }
     }
     
     private void OnDestroy()

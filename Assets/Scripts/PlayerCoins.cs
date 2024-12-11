@@ -15,7 +15,6 @@ public class PlayerCoins : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coins = 10;
         // Debug.Log($"PC PlayerCoins Start: Player has {coins}.");
     }
 
@@ -51,12 +50,12 @@ public class PlayerCoins : MonoBehaviour
     public bool SpendCoins(int cost)
     {
         int balance = GetCoinBalance();
-        coinText.text = string.Format("{0}", balance);
         if (balance >= cost)
         {
             // Debug.Log($"PC SpendCoins: Player has enough coins ({coins}).");
             coins -= cost;
             // Debug.Log($"PC SpendCoins: Player new balance ({coins}).");
+            coinText.text = string.Format("{0}", coins);
             return true;
         }
         else

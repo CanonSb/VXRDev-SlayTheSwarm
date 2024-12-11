@@ -47,11 +47,7 @@ public class SliceToBuy : MonoBehaviour
 
     void OnDestroy()
     {
-        itemCost = 5;
-        Debug.Log($"STB OnDestroy: itemCost ({itemCost}).");
-
         playerCoins.SpendCoins(itemCost);
-        
 
         if (itemToSpawn == null) 
         {
