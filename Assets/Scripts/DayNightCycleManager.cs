@@ -16,10 +16,10 @@ public class DayNightCycleManager : MonoBehaviour
     [SerializeField] private AnimationCurve lightIntensityCurve;
     [SerializeField] private float lightRotationAngle = 360f;
 
-    [Header("Audio Settings")]
-    [SerializeField] private AudioSource dayAmbientAudio;
-    [SerializeField] private AudioSource nightAmbientAudio;
-    [SerializeField] private float audioTransitionDuration = 3f;
+    // [Header("Audio Settings")]
+    // [SerializeField] private AudioSource dayAmbientAudio;
+    // [SerializeField] private AudioSource nightAmbientAudio;
+    // [SerializeField] private float audioTransitionDuration = 3f;
 
     [Header("Time Configuration")]
     [Range(0f, 1f)]
@@ -32,7 +32,7 @@ public class DayNightCycleManager : MonoBehaviour
 
     private Coroutine transitionCoroutine;
     private float previousTime = 0f; // Track the previous time to determine rotation direction
-    private float totalRotation = 0f; // Track total rotation to maintain continuous movement
+    // private float totalRotation = 0f; // Track total rotation to maintain continuous movement
 
     /// <summary>
     /// Transition to the configured daytime value.
@@ -109,7 +109,7 @@ public class DayNightCycleManager : MonoBehaviour
     {
         UpdateSkybox(normalizedTime);
         UpdateLighting(normalizedTime);
-        UpdateAudio(normalizedTime);
+        // UpdateAudio(normalizedTime);
     }
 
     private void UpdateSkybox(float normalizedTime)
@@ -144,37 +144,37 @@ public class DayNightCycleManager : MonoBehaviour
         directionalLight.intensity = intensity;
     }
 
-    private void UpdateAudio(float normalizedTime)
-    {
-        if (normalizedTime > 0.25f && normalizedTime < 0.75f)
-        {
-            StartCoroutine(CrossfadeAudio(dayAmbientAudio, nightAmbientAudio));
-        }
-        else
-        {
-            StartCoroutine(CrossfadeAudio(nightAmbientAudio, dayAmbientAudio));
-        }
-    }
+    // private void UpdateAudio(float normalizedTime)
+    // {
+    //     if (normalizedTime > 0.25f && normalizedTime < 0.75f)
+    //     {
+    //         StartCoroutine(CrossfadeAudio(dayAmbientAudio, nightAmbientAudio));
+    //     }
+    //     else
+    //     {
+    //         StartCoroutine(CrossfadeAudio(nightAmbientAudio, dayAmbientAudio));
+    //     }
+    // }
 
-    private IEnumerator CrossfadeAudio(AudioSource fadeIn, AudioSource fadeOut)
-    {
-        float elapsedTime = 0f;
+    // private IEnumerator CrossfadeAudio(AudioSource fadeIn, AudioSource fadeOut)
+    // {
+    //     float elapsedTime = 0f;
 
-        float startVolumeIn = fadeIn.volume;
-        float startVolumeOut = fadeOut.volume;
+    //     float startVolumeIn = fadeIn.volume;
+    //     float startVolumeOut = fadeOut.volume;
 
-        while (elapsedTime < audioTransitionDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsedTime / audioTransitionDuration);
+    //     while (elapsedTime < audioTransitionDuration)
+    //     {
+    //         elapsedTime += Time.deltaTime;
+    //         float t = Mathf.Clamp01(elapsedTime / audioTransitionDuration);
 
-            fadeIn.volume = Mathf.Lerp(startVolumeIn, 1f, t);
-            fadeOut.volume = Mathf.Lerp(startVolumeOut, 0f, t);
+    //         fadeIn.volume = Mathf.Lerp(startVolumeIn, 1f, t);
+    //         fadeOut.volume = Mathf.Lerp(startVolumeOut, 0f, t);
 
-            yield return null;
-        }
+    //         yield return null;
+    //     }
 
-        fadeIn.volume = 1f;
-        fadeOut.volume = 0f;
-    }
+    //     fadeIn.volume = 1f;
+    //     fadeOut.volume = 0f;
+    // }
 }

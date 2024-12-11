@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using TMPro;
 using UnityEngine;
 
@@ -14,13 +15,17 @@ public class SliceToBuy : MonoBehaviour
     // Reference to Right Hand Text UI
     public TextMeshProUGUI output;
 
-    private int numCoins;
+    // Player's coin balance
+    private int coinBalance;
+
+    // Item cost
+    public int itemCost;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Initialize numCoins
-        numCoins = 0;
+        // Initialize coinBalance
+        coinBalance = 0;
 
         if (gameController == null) gameController = GameObject.FindWithTag("GameController");
 
@@ -38,8 +43,8 @@ public class SliceToBuy : MonoBehaviour
 
         if (playerCoins != null)
         {
-            numCoins = playerCoins.GetCoinBalance();
-            // output.text = $"STB Player has {numCoins}.";
+            coinBalance = playerCoins.GetCoinBalance();
+            // output.text = $"STB Player has {coinBalance}.";
             Debug.Log($"STB playerCoins EXISTS.");
         }
         else
@@ -58,8 +63,24 @@ public class SliceToBuy : MonoBehaviour
 
     void OnDestroy()
     {
-        playerCoins.EarnCoins(5);
-        numCoins = playerCoins.GetCoinBalance();
-        // output.text = $"Player has {numCoins}!";
+        itemCost = 5;
+        Debug.Log($"STB OnDestroy: itemCost ({itemCost}).");
+
+        coinBalance = playerCoins.GetCoinBalance();
+        output.text = $"Player has {coinBalance} coins.";
+        Debug.Log($"STB OnDestroy: coinBalance ({coinBalance}).");
+
+        if (playerCoins.SpendCoins(itemCost))
+        {
+            Debug.Log("STB OnDestroy: Item purchased");
+            coinBalance = playerCoins.GetCoinBalance();
+            output.text = $"STB OnDestroy: Item Purchased new coinBalance ({coinBalance}).";
+            Debug.Log($"STB OnDestroy: new coinBalance ({coinBalance}).");
+        }
+        else
+        {
+            Debug.Log("STB OnDestroy: Insufficient Balance!");
+            output.text = $"STB OnDestroy: Insufficient Balance! ({coinBalance})";
+        }
     }
 }
