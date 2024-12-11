@@ -32,6 +32,12 @@ public class PlayerHealth : MonoBehaviour
         else StartCoroutine(triggerHurtOverlay());
     }
 
+    public void restoreHealth(int val)
+    {
+        hitPoints += val;
+        hpText.text = string.Format("{0}", hitPoints);
+    }
+
     public IEnumerator TriggerDeath()
     {
         deathOverlay.SetActive(true);

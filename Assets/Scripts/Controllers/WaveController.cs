@@ -36,7 +36,7 @@ public class WaveController : MonoBehaviour
     {
         DNCycleManager.SetDay();
     }
-    
+
     void Update()
     {
         // Increment the elapsed time
@@ -78,7 +78,7 @@ public class WaveController : MonoBehaviour
     {
         // Stop enemy spawning if skipping through waves
         // if (enemySpawning != null) EndWave();
-        shop.SetActive(false);
+        if (shop != null) shop.SetActive(false);
         
         // increment wave num and reset wave timer
         waveNum++;

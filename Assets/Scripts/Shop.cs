@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,6 +13,9 @@ public class Shop : MonoBehaviour
 
     public GameObject monolith;
     public Transform monolithSpawnPos;
+
+    public GameObject potionPriceTag;
+    public Transform potionPriceTagParent;
 
     // Start is called before the first frame update
     void Start()
@@ -79,5 +83,11 @@ public class Shop : MonoBehaviour
         Vector3 directionToPlayer = player.position - transform.position;
         directionToPlayer.y = 0;  // Set the y component to 0 to avoid vertical tilt
         return Quaternion.LookRotation(directionToPlayer);
+    }
+
+    public IEnumerator SpawnPriceTag()
+    {
+        yield return new WaitForSeconds(3f);
+        Instantiate(potionPriceTag, potionPriceTagParent);
     }
 }
