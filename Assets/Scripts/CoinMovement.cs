@@ -30,31 +30,6 @@ public class CoinTracking : MonoBehaviour
     {
         Destroy(gameObject, coinLifeTime);
         if (gameController == null) gameController = GameObject.FindWithTag("GameController");
-
-        if (gameController != null)
-        {
-            // Debug.Log($"CM GameController EXISTS.");
-            // Get PlayerCoins script
-            playerCoins = gameController.GetComponent<PlayerCoins>();
-        }
-        else
-        {
-            // Debug.LogError("CM GameController NULL!");
-            return;
-        }
-
-        if (playerCoins != null)
-        {
-            // Debug.Log($"CM playerCoins EXISTS.");
-        }
-        else
-        {
-            // Debug.LogError("CM playerCoins NULL!");
-            return;
-        }
-
-        Destroy(gameObject, coinLifeTime);
-
         if (playerCam == null) playerCam = Camera.main.transform;
     }
 
