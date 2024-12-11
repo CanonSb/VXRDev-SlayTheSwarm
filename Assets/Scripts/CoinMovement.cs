@@ -25,8 +25,6 @@ public class CoinTracking : MonoBehaviour
 
     private Transform playerCam;
 
-    public float coinLifeTime;
-
     // Start is called before the first frame update
     void Start()
     {

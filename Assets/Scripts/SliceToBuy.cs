@@ -21,11 +21,6 @@ public class SliceToBuy : MonoBehaviour
 
     public Shop shop;
 
-
-
-    // Item name
-    private string itemName;
-
     // Start is called before the first frame update
     void Start()
     {

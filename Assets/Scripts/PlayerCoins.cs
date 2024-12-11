@@ -66,7 +66,7 @@ public class PlayerCoins : MonoBehaviour
     /// Subtracts the specified number of coins to the player's total.
     /// </summary>
     /// <returns>Boolean</returns>
-    public bool SpendCoins(string itemName)
+    public bool SpendCoins(int cost)
     {
         int balance = GetCoinBalance();
         if (balance >= cost)
