@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
+using System.Net;
 
 public class WaveController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class WaveController : MonoBehaviour
     public Slider waveBar;
     public int waveNum;
     public EnemySpawner spawner;
+    public float waveDuration = 60f;
 
     [Header("Enemy Prefabs")]
     public GameObject goblinGreen;
@@ -21,11 +23,20 @@ public class WaveController : MonoBehaviour
     public GameObject[] catapults;
     [Header("Shop")]
     public GameObject shop;
+    [Header("Day Night Cycle")]
+    public DayNightCycleManager DNCycleManager;
 
     private float _elapsedTime = 0;
     private float _waveTime = 0;
     private Coroutine enemySpawning;
+    private Coroutine waveUpdating;
+    private Coroutine dayCoroutine;
 
+    void Start()
+    {
+        DNCycleManager.SetDay();
+    }
+    
     void Update()
     {
         // Increment the elapsed time
@@ -42,12 +53,7 @@ public class WaveController : MonoBehaviour
 
         if (Keyboard.current.deleteKey.wasPressedThisFrame)
         {
-            GameObject[] spawnedEnemies = GameObject.FindGameObjectsWithTag("Goblin");
-            foreach (GameObject enemy in spawnedEnemies)
-            {
-                EnemyVitals vitals = enemy.GetComponent<EnemyVitals>();
-                if (vitals != null) vitals.OnGameObjectDestroyed(enemy);
-            }
+            KillRemainingGoblins();
             StartCoroutine(TriggerCatapultAttacks());
         }
     }
@@ -60,7 +66,7 @@ public class WaveController : MonoBehaviour
         int displayMinutes = Mathf.FloorToInt(_elapsedTime / 60);
         int displaySeconds = Mathf.FloorToInt(_elapsedTime % 60);
 
-        float wavePercentage = Mathf.Min(1f, _waveTime / 60f);
+        float wavePercentage = Mathf.Min(1f, _waveTime / waveDuration);
 
         // Format the text
         timerText.text = string.Format("wave {0}               {1:00}:{2:00}", waveNum, displayMinutes, displaySeconds);
@@ -71,30 +77,22 @@ public class WaveController : MonoBehaviour
     public void StartNextWave()
     {
         // Stop enemy spawning if skipping through waves
-        if (enemySpawning != null) EndWave();
+        // if (enemySpawning != null) EndWave();
         shop.SetActive(false);
         
         // increment wave num and reset wave timer
-        float duration = 60f;
         waveNum++;
-        _waveTime = 0;
-
         print(string.Format("Starting wave {0}.", waveNum));
-        // Start coroutine to update wave settings
-        StartCoroutine(UpdateWaveOverTime(duration));
-        // Start enemy spawning coroutine
-        enemySpawning = StartCoroutine(spawner.SpawnEnemies());
+
+        dayCoroutine = StartCoroutine(ChangeToDay());
     }
 
     // End wave
     public void EndWave()
     {
         print(string.Format("Wave {0} has ended.", waveNum));
+        StartCoroutine(ChangeToNight());
         StopCoroutine(enemySpawning);
-        shop.SetActive(true);
-
-        // !!! REMOVE WHEN DAY/NIGHT CYCLE IS INCORPORATED
-        // StartNextWave();
     }
 
 
@@ -189,6 +187,41 @@ public class WaveController : MonoBehaviour
         {
             if (cat != null && cat.activeSelf) cat.GetComponent<Catapult>().Attack();
             yield return new WaitForSeconds(Random.Range(0.2f, 0.5f));
+        }
+    }
+
+
+    private IEnumerator ChangeToDay()
+    {
+        if (waveNum > 1)
+        {
+            DNCycleManager.SetDay();
+            yield return new WaitForSeconds(DNCycleManager.transitionDuration);            
+        }
+
+        _waveTime = 0;
+        // Start coroutine to update wave settings
+        waveUpdating = StartCoroutine(UpdateWaveOverTime(waveDuration));
+        // Start enemy spawning coroutine
+        enemySpawning = StartCoroutine(spawner.SpawnEnemies());
+    }
+    // Wait for transition,
+    private IEnumerator ChangeToNight()
+    {
+        DNCycleManager.SetNight();
+        yield return new WaitForSeconds(DNCycleManager.transitionDuration);
+        KillRemainingGoblins();
+        if (shop != null) shop.SetActive(true);
+    }
+
+
+    private void KillRemainingGoblins()
+    {
+        GameObject[] spawnedEnemies = GameObject.FindGameObjectsWithTag("Goblin");
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            EnemyVitals vitals = enemy.GetComponent<EnemyVitals>();
+            if (vitals != null) vitals.OnGameObjectDestroyed(enemy);
         }
     }
 }

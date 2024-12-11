@@ -10,6 +10,9 @@ public class Shop : MonoBehaviour
     public ParticleSystem smokeParticles;
     public AudioSource _audioSource;
 
+    public GameObject monolith;
+    public Transform monolithSpawnPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,8 @@ public class Shop : MonoBehaviour
         setCorrectPosition();
         smokeParticles.Play();
         _audioSource.Play();
+        GameObject newMon = Instantiate(monolith, monolithSpawnPos.position, monolith.transform.rotation);
+        
     }
 
     private void setCorrectPosition()
@@ -64,8 +69,15 @@ public class Shop : MonoBehaviour
         }
 
         // Make the target object face the player horizontally
+        transform.rotation = GetRotationTowardPlayer();
+    }
+
+
+    private Quaternion GetRotationTowardPlayer()
+    {
+        Transform player = Camera.main.transform;
         Vector3 directionToPlayer = player.position - transform.position;
         directionToPlayer.y = 0;  // Set the y component to 0 to avoid vertical tilt
-        transform.rotation = Quaternion.LookRotation(directionToPlayer);
+        return Quaternion.LookRotation(directionToPlayer);
     }
 }

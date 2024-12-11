@@ -96,10 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 6906593208518862271}
-  xrRig: {fileID: 0}
-  player: {fileID: 0}
+  gameController: {fileID: 0}
   dstrThresh: 0.5
   playerCoins: {fileID: 0}
+  coinLifeTime: 20
 --- !u!1001 &816245564241006841
 PrefabInstance:
   m_ObjectHideFlags: 0

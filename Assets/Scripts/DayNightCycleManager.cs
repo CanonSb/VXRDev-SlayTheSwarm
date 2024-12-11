@@ -28,7 +28,7 @@ public class DayNightCycleManager : MonoBehaviour
     [SerializeField] private float nighttimeValue = 0.75f; // Evening (e.g., 6 PM)
     [Range(0f, 1f)]
     [SerializeField] private float currentTime = 0f;
-    [SerializeField] private float transitionDuration = 5f; // Duration of transitions in seconds
+    public float transitionDuration = 5f; // Duration of transitions in seconds
 
     private Coroutine transitionCoroutine;
     private float previousTime = 0f; // Track the previous time to determine rotation direction
