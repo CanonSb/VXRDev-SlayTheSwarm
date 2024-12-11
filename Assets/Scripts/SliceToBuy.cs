@@ -23,6 +23,9 @@ public class SliceToBuy : MonoBehaviour
 
 
 
+    // Item name
+    private string itemName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +67,5 @@ public class SliceToBuy : MonoBehaviour
         }
 
     }
-
-
 }
+

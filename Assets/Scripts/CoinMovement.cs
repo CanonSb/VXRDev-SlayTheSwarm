@@ -20,6 +20,9 @@ public class CoinTracking : MonoBehaviour
     // PlayerCoins script
     public PlayerCoins playerCoins;
 
+    // Coin life time
+    private float coinLifeTime = 60f;
+
     private Transform playerCam;
 
     public float coinLifeTime;
@@ -52,8 +55,9 @@ public class CoinTracking : MonoBehaviour
             return;
         }
 
-        if (playerCam == null) playerCam = Camera.main.transform;
+        Destroy(gameObject, coinLifeTime);
 
+        if (playerCam == null) playerCam = Camera.main.transform;
     }
 
     // Update is called once per frame
