@@ -875,6 +875,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
         type: 3}
+      propertyPath: shop
+      value: 
+      objectReference: {fileID: 2039047327}
+    - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
+        type: 3}
       propertyPath: spawner
       value: 
       objectReference: {fileID: 394403739}
@@ -1685,6 +1690,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2037725552}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2039047327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4110988139186940736, guid: 1f34506a0d63acf41ada47a62db6747c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2524081981330638784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2133862136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,6 +1821,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110988139186940736, guid: 1f34506a0d63acf41ada47a62db6747c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8827578576479478026, guid: 1f34506a0d63acf41ada47a62db6747c,
         type: 3}

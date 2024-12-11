@@ -19,6 +19,8 @@ public class WaveController : MonoBehaviour
     public GameObject goblinRed;
     [Header("Catapult Array")]
     public GameObject[] catapults;
+    [Header("Shop")]
+    public GameObject shop;
 
     private float _elapsedTime = 0;
     private float _waveTime = 0;
@@ -70,6 +72,7 @@ public class WaveController : MonoBehaviour
     {
         // Stop enemy spawning if skipping through waves
         if (enemySpawning != null) EndWave();
+        shop.SetActive(false);
         
         // increment wave num and reset wave timer
         float duration = 60f;
@@ -88,9 +91,10 @@ public class WaveController : MonoBehaviour
     {
         print(string.Format("Wave {0} has ended.", waveNum));
         StopCoroutine(enemySpawning);
+        shop.SetActive(true);
 
         // !!! REMOVE WHEN DAY/NIGHT CYCLE IS INCORPORATED
-        StartNextWave();
+        // StartNextWave();
     }
 
 
