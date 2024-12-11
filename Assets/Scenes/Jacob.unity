@@ -185,6 +185,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4895071740171514069, guid: cf39aeb7930ccaa489151513bbfb4a8b,
+        type: 3}
+      propertyPath: coinPrefab
+      value: 
+      objectReference: {fileID: 6906593208518862271, guid: 4f826e6813f47e5448cd0562f86cda63,
+        type: 3}
     - target: {fileID: 8916993036407602440, guid: cf39aeb7930ccaa489151513bbfb4a8b,
         type: 3}
       propertyPath: m_Name
@@ -1139,6 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coins: 0
+  output: {fileID: 1317278377}
 --- !u!1 &986542983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,7 +1892,6 @@ MonoBehaviour:
   coin: {fileID: 1722851498}
   xrRig: {fileID: 1545865390}
   player: {fileID: 777603581}
-  speed: 1.5
   dstrThresh: 0.5
   playerCoins: {fileID: 0}
 --- !u!54 &1722851504
