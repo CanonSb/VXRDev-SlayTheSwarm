@@ -32,20 +32,20 @@ public class SliceToBuy : MonoBehaviour
         else
         {
             Debug.LogError("STB GameController NULL!");
-            output.text = "STB playerCoins is NULL!";
+            // output.text = "STB playerCoins is NULL!";
             return;
         }
 
         if (playerCoins != null)
         {
             numCoins = playerCoins.GetCoinBalance();
-            output.text = $"STB Player has {numCoins}.";
+            // output.text = $"STB Player has {numCoins}.";
             Debug.Log($"STB playerCoins EXISTS.");
         }
         else
         {
             Debug.LogError("STB playerCoins NULL!");
-            output.text = "STB playerCoins NULL!";
+            // output.text = "STB playerCoins NULL!";
             return;
         }
     }
@@ -60,6 +60,6 @@ public class SliceToBuy : MonoBehaviour
     {
         playerCoins.EarnCoins(5);
         numCoins = playerCoins.GetCoinBalance();
-        output.text = $"Player has {numCoins}!";
+        // output.text = $"Player has {numCoins}!";
     }
 }
