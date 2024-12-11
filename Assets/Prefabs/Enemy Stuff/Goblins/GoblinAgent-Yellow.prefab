@@ -2935,12 +2935,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a927c2579e0754742af9662b6d1c5b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldDropChance: 0.6
   vitalObjects:
   - {fileID: 3243994701775416871}
   - {fileID: 5840311287486091490}
   - {fileID: 1362943307196489617}
   agent: {fileID: 0}
   highestParentObj: {fileID: 1362943307196489617}
+  coinPrefab: {fileID: 6906593208518862271, guid: 4f826e6813f47e5448cd0562f86cda63,
+    type: 3}
 --- !u!95 &9217691337920311280
 Animator:
   serializedVersion: 5
