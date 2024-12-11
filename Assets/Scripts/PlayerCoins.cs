@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerCoins : MonoBehaviour
 {
 
     public int coins = 0;
+    // Reference to Right Hand Text UI
+    public TextMeshProUGUI output;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +38,7 @@ public class PlayerCoins : MonoBehaviour
     {
         coins += num;
         Debug.Log($"PC EarnCoins: Player has {coins}.");
+        output.text = $"STB Player has {coins}.";
     }
 
     /// <summary>
