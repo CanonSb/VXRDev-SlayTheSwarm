@@ -8,9 +8,12 @@ using UnityEngine.AI;
 
 public class EnemyVitals : MonoBehaviour
 {
+    [Range(0, 1f)]
+    public float goldDropChance;
     public List<GameObject> vitalObjects;
     public NavMeshAgent agent;
     public GameObject highestParentObj;
+    public GameObject coinPrefab;
 
     private List<GameObject> enemyParts;
     private EnemyMovement movement;
@@ -53,6 +56,13 @@ public class EnemyVitals : MonoBehaviour
         DestroyRemainingParts();
         // Destroy this object containing everything after some time
         Invoke("DestroyParent", 10f);
+
+        // Drop gold
+        if (Random.value <= goldDropChance)
+        {
+            // TODO: Do gold drop here
+            GameObject coin = Instantiate(coinPrefab, destroyedObject.transform.position, Quaternion.identity);
+        }
     }
 
     // Custom listener class to detect destruction of GameObjects
