@@ -11,7 +11,7 @@ public class PlayerCoins : MonoBehaviour
     void Start()
     {
         coins = 10;
-        Debug.Log($"PlayerCoins Start: Player has {coins}.");
+        Debug.Log($"PC PlayerCoins Start: Player has {coins}.");
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class PlayerCoins : MonoBehaviour
     /// <returns>Interger</returns>
     public int GetCoinBalance()
     {
-        Debug.Log($"GetCoinBalance: Player has {coins}.");
+        Debug.Log($"PC GetCoinBalance: Player has {coins}.");
         return coins;
     }
 
@@ -34,7 +34,7 @@ public class PlayerCoins : MonoBehaviour
     public void EarnCoins(int num)
     {
         coins += num;
-        Debug.Log($"EarnCoins: Player has {coins}.");
+        Debug.Log($"PC EarnCoins: Player has {coins}.");
     }
 
     /// <summary>
@@ -46,14 +46,14 @@ public class PlayerCoins : MonoBehaviour
         int balance = GetCoinBalance();
         if (balance >= cost)
         {
-            Debug.Log($"SpendCoins: Player has enough coins ({coins}).");
+            Debug.Log($"PC SpendCoins: Player has enough coins ({coins}).");
             coins -= cost;
-            Debug.Log($"SpendCoins: Player new balance ({coins}).");
+            Debug.Log($"PC SpendCoins: Player new balance ({coins}).");
             return true;
         }
         else
         {
-            Debug.Log($"SpendCoins: Player has does not have enough coins ({coins}).");
+            Debug.Log($"PC SpendCoins: Player has does not have enough coins ({coins}).");
             return false;
         }
     }
