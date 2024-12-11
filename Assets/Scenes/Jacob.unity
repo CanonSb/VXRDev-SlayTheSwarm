@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86d6f8055e7bf44ba6605d818016ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 0
+  coins: 9
   output: {fileID: 1317278377}
 --- !u!1 &986542983
 GameObject:
@@ -1244,7 +1244,7 @@ PrefabInstance:
     - target: {fileID: 580600372806907100, guid: 996fd035de7ca4a40964f20372f58792,
         type: 3}
       propertyPath: m_Name
-      value: SliceToBuy
+      value: SliceToBuyEntity
       objectReference: {fileID: 0}
     - target: {fileID: 2993869636675112242, guid: 996fd035de7ca4a40964f20372f58792,
         type: 3}
@@ -1522,6 +1522,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1815124116}
+    - target: {fileID: 2330285870867260895, guid: 66071748fa168644f9d030f7ed6cace3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1853,6 +1858,16 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3995217667203726880, guid: 4f826e6813f47e5448cd0562f86cda63,
+        type: 3}
+      propertyPath: xrRig
+      value: 
+      objectReference: {fileID: 1545865390}
+    - target: {fileID: 3995217667203726880, guid: 4f826e6813f47e5448cd0562f86cda63,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 777603581}
     - target: {fileID: 6906593208518862271, guid: 4f826e6813f47e5448cd0562f86cda63,
         type: 3}
       propertyPath: m_Name
@@ -1865,10 +1880,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6906593208518862271, guid: 4f826e6813f47e5448cd0562f86cda63,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1722851499}
-    - targetCorrespondingSourceObject: {fileID: 6906593208518862271, guid: 4f826e6813f47e5448cd0562f86cda63,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1722851504}
   m_SourcePrefab: {fileID: 100100000, guid: 4f826e6813f47e5448cd0562f86cda63, type: 3}
 --- !u!1 &1722851498 stripped
@@ -1877,23 +1888,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1722851497}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1722851499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722851498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0a5d43a8f8f7b47979832441d4bad1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coin: {fileID: 1722851498}
-  xrRig: {fileID: 1545865390}
-  player: {fileID: 777603581}
-  dstrThresh: 0.5
-  playerCoins: {fileID: 0}
 --- !u!54 &1722851504
 Rigidbody:
   m_ObjectHideFlags: 0
