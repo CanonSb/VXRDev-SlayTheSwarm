@@ -22,6 +22,7 @@ public class SliceToBuy : MonoBehaviour
     public Shop shop;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +53,8 @@ public class SliceToBuy : MonoBehaviour
         if (itemToSpawn == null) 
         {
             hpController.restoreHealth(5);
-            shop.StartCoroutine(shop.SpawnPriceTag());
+            if (shop == null) shop = GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>();
+            if (shop != null) shop.StartCoroutine(shop.SpawnPriceTag());
         }
         else
         {

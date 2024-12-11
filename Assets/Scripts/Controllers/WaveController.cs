@@ -202,6 +202,7 @@ public class WaveController : MonoBehaviour
                 yield return new WaitForSeconds(duration / 4);
                 break;
             default:
+                spawner.spawnInterval = 1000f;
                 break;
         }
         EndWave();

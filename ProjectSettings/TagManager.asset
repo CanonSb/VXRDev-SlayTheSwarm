@@ -10,6 +10,7 @@ TagManager:
   - DeathOverlay
   - Goblin
   - Shield
+  - Shop
   layers:
   - Default
   - TransparentFX
