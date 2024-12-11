@@ -9,6 +9,8 @@ TagManager:
   - EnemySpawnController
   - DeathOverlay
   - Goblin
+  - Shield
+  - Shop
   layers:
   - Default
   - TransparentFX

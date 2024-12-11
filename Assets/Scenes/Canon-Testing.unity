@@ -2292,7 +2292,7 @@ PrefabInstance:
     - target: {fileID: 7983933547887950094, guid: b763ee7b04f246d4e8f0b0344833e995,
         type: 3}
       propertyPath: m_Name
-      value: XR Setup Custom
+      value: XR Setup Custom (Canon)
       objectReference: {fileID: 0}
     - target: {fileID: 9148827603056159131, guid: b763ee7b04f246d4e8f0b0344833e995,
         type: 3}

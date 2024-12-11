@@ -9,17 +9,19 @@ public class SliceToBuy : MonoBehaviour
 {   
     public GameObject gameController;
 
-    // PlayerCoins script
+    public int itemCost;
+    public TMP_Text priceText;
     public PlayerCoins playerCoins;
-
-    // Reference to Right Hand Text UI
-    public TextMeshProUGUI output;
-
-    // Player's coin balance
     private int coinBalance;
 
-    // Item cost
-    public int itemCost;
+    public GameObject tableItem;
+    public GameObject itemToSpawn;
+
+    private PlayerHealth hpController;
+
+    public Shop shop;
+
+
 
     // Item name
     private string itemName;
@@ -30,62 +32,40 @@ public class SliceToBuy : MonoBehaviour
         // Initialize coinBalance
         coinBalance = 0;
 
-        // Get item name
-        itemName = gameObject.name;
+        priceText.text = string.Format("{0}", itemCost);
 
         if (gameController == null) gameController = GameObject.FindWithTag("GameController");
+        if (gameController != null) playerCoins = gameController.GetComponent<PlayerCoins>();
 
-        if (gameController != null)
-        {
-            Debug.Log($"STB GameController EXISTS.");
-            playerCoins = gameController.GetComponent<PlayerCoins>();
-        }
-        else
-        {
-            Debug.LogError("STB GameController NULL!");
-            // output.text = "STB playerCoins is NULL!";
-            return;
-        }
-
-        if (playerCoins != null)
-        {
-            coinBalance = playerCoins.GetCoinBalance();
-            // output.text = $"STB Player has {coinBalance}.";
-            Debug.Log($"STB playerCoins EXISTS.");
-        }
-        else
-        {
-            Debug.LogError("STB playerCoins NULL!");
-            // output.text = "STB playerCoins NULL!";
-            return;
-        }
+        hpController = GameObject.FindWithTag("GameController")?.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (playerCoins != null) coinBalance = playerCoins.GetCoinBalance();
 
+        if (coinBalance >= itemCost) gameObject.layer = LayerMask.NameToLayer("Sliceable");
+        else gameObject.layer = LayerMask.NameToLayer("NotSliceable");
     }
 
     void OnDestroy()
     {
-        // Debug.Log($"STB OnDestroy: itemCost ({itemCost}).");
+        playerCoins.SpendCoins(itemCost);
 
-        // coinBalance = playerCoins.GetCoinBalance();
-        // output.text = $"Player has {coinBalance} coins.";
-        // Debug.Log($"STB OnDestroy: coinBalance ({coinBalance}).");
-
-        if (playerCoins.SpendCoins(itemName))
+        if (itemToSpawn == null) 
         {
-            Debug.Log("STB OnDestroy: Item purchased");
-            coinBalance = playerCoins.GetCoinBalance();
-            // output.text = $"STB OnDestroy: Item Purchased new coinBalance ({coinBalance}).";
-            Debug.Log($"STB OnDestroy: coinBalance ({coinBalance}).");
+            hpController.restoreHealth(5);
+            if (shop == null) shop = GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>();
+            if (shop != null) shop.StartCoroutine(shop.SpawnPriceTag());
         }
         else
         {
-            Debug.Log("STB OnDestroy: Insufficient Balance! ({coinBalance})");
-            // output.text = $"STB OnDestroy: Insufficient Balance! ({coinBalance})";
+            tableItem.SetActive(false);
+            itemToSpawn.SetActive(true);
+            itemToSpawn.transform.SetParent(null);
         }
+
     }
 }
+
