@@ -15,6 +15,7 @@ public class EnemyVitals : MonoBehaviour
     public List<GameObject> vitalObjects;
     public NavMeshAgent agent;
     public GameObject highestParentObj;
+    public GameObject coinPrefab;
 
     private List<GameObject> _enemyParts;
     private List<MeshCollider> _enemyColliders;
@@ -79,7 +80,7 @@ public class EnemyVitals : MonoBehaviour
         if (Random.value <= goldDropChance)
         {
             // TODO: Do gold drop here
-            // GameObject coin = Instantiate(placeholder, transform.position, placeholder.transform.rotation);
+            GameObject coin = Instantiate(coinPrefab, destroyedObject.transform.position, Quaternion.identity);
         }
     }
 
