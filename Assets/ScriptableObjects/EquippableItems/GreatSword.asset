@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa93e223f4f4c4d4a88a2873ed4cca4b, type: 3}
+  m_Name: GreatSword
+  m_EditorClassIdentifier: 
+  itemName: Great Sword
+  description: You stole this from someone
+  allowTeleportation: 0
+  allowBlocking: 0
+  allowDamage: 1
+  damageMultiplier: 2
