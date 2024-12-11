@@ -15,7 +15,7 @@ public class CoinTracking : MonoBehaviour
     public GameObject player;
 
     // Speed that the coin moves at
-    public float speed;
+    private float speed = 1.5f;
 
     // Distance from player to destroy coin
     public float dstrThresh = 0.5f;
