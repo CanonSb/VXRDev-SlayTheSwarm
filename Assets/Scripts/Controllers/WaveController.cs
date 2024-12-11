@@ -91,7 +91,7 @@ public class WaveController : MonoBehaviour
     {
         print(string.Format("Wave {0} has ended.", waveNum));
         StopCoroutine(enemySpawning);
-        shop.SetActive(true);
+        if (shop != null) shop.SetActive(true);
 
         // !!! REMOVE WHEN DAY/NIGHT CYCLE IS INCORPORATED
         // StartNextWave();
