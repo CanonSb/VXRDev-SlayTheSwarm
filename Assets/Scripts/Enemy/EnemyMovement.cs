@@ -15,10 +15,13 @@ public class EnemyMovement : MonoBehaviour
     private float attackRange = 2f;
     [SerializeField]
     private float idleTimeBeforeAttack = 1f;
+    [SerializeField]
+    private float animationSpeed = 1f;
 
     private bool isAttackCycleActive = false;
     private Coroutine attackCycleCoroutine = null;
     private bool isInAttackRange = false;
+    private Vector3 lastTargetPosition;
 
     private AudioSource goblinHitPlayerAudioSource;
     public GameObject goblinHitPlayerController;
@@ -27,6 +30,7 @@ public class EnemyMovement : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        if (animator != null) animator.speed = animationSpeed;
         target = Camera.main.transform; // Sets the target to the main camera's position
         hpController = GameObject.FindWithTag("GameController")?.GetComponent<PlayerHealth>();
 
@@ -38,14 +42,23 @@ public class EnemyMovement : MonoBehaviour
         if (agent && agent.enabled)
         {
             // Move the agent toward the target
-            agent.SetDestination(target.position);
+            UpdateAgentTarget();
 
             // Update animation parameters
             UpdateAnimator();
         }
     }
 
-    void UpdateAnimator()
+    private void UpdateAgentTarget()
+    {
+        if (Vector3.Distance(target.position, lastTargetPosition) > 0.1f) // Threshold to avoid excessive updates
+        {
+            agent.SetDestination(target.position);
+            lastTargetPosition = target.position;
+        }
+    }
+
+    private void UpdateAnimator()
     {
         if (!animator) return;
         // Check if the agent is moving
@@ -57,35 +70,25 @@ public class EnemyMovement : MonoBehaviour
         isInAttackRange = distanceToTarget <= attackRange;
 
         // Handle attack cycle
-        if (isInAttackRange && !isRunning)
+        if (isInAttackRange && !isRunning && !isAttackCycleActive)
         {
             // Start attack cycle if not already active
-            if (!isAttackCycleActive)
+            if (attackCycleCoroutine == null)
             {
-                if (attackCycleCoroutine != null)
-                {
-                    StopCoroutine(attackCycleCoroutine);
-                }
                 attackCycleCoroutine = StartCoroutine(AttackCycle());
             }
         }
-        else
+        // Stop attack cycle if out of range or moving
+        else if ((!isInAttackRange || isRunning) && attackCycleCoroutine != null)
         {
-            // Stop attack cycle if out of range or moving
-            if (isAttackCycleActive)
-            {
-                if (attackCycleCoroutine != null)
-                {
-                    StopCoroutine(attackCycleCoroutine);
-                    attackCycleCoroutine = null;
-                }
-                isAttackCycleActive = false;
-                animator.SetBool("isAttacking", false);
-            }
+            StopCoroutine(attackCycleCoroutine);
+            attackCycleCoroutine = null;
+            isAttackCycleActive = false;
+            animator.SetBool("isAttacking", false);
         }
     }
 
-    IEnumerator AttackCycle()
+    private IEnumerator AttackCycle()
     {
         
         isAttackCycleActive = true;
@@ -103,10 +106,10 @@ public class EnemyMovement : MonoBehaviour
             animator.SetBool("isAttacking", false);
 
             // About how much time it takes for the sword to come down
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(0.8f / animationSpeed);
             if (isInAttackRange) 
             {
-                hpController.takeDamage();
+                hpController.takeDamage(1);
                 goblinHitPlayerAudioSource.Play();
             }
         }
