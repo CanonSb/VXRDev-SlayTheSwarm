@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7624493887132009779}
   - component: {fileID: 7233329159280056914}
   - component: {fileID: 9088776618436644164}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 8258136894672573561}
   - component: {fileID: 3415446470019116054}
   - component: {fileID: 6789735291948538276}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Start Slice Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 4031456165463258285}
   - component: {fileID: 8515291566384502842}
   - component: {fileID: 7965732137590205900}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: End Slice Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 6227739800196011842}
   - component: {fileID: 7044399266876479719}
   - component: {fileID: 5054811772798708781}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sword Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 910994066856515296}
   - component: {fileID: 2507342227911535426}
   - component: {fileID: 7029807396276314579}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Attach Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

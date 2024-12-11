@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Monolith : MonoBehaviour
 {
     public GameObject gameController;
+    private WaveController _waveController;
     public GameObject enemySpawner;
     public GameObject hurtOverlay;
     public GameObject deathOverlay;
@@ -14,7 +14,8 @@ public class Monolith : MonoBehaviour
     {
         
         if (gameController == null) gameController = GameObject.FindWithTag("GameController");
-        if (enemySpawner == null) enemySpawner = GameObject.FindWithTag("EnemySpawnController");
+        if (gameController != null) _waveController = gameController.GetComponent<WaveController>();
+
         if (hurtOverlay == null) hurtOverlay = GameObject.FindWithTag("HurtOverlay");
         if (deathOverlay == null) deathOverlay = GameObject.FindWithTag("DeathOverlay");
         hurtOverlay.SetActive(false);
@@ -24,12 +25,14 @@ public class Monolith : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnDestroy()
     {
-        gameController.SetActive(true);
-        enemySpawner.SetActive(true);
+        if (_waveController != null) _waveController.StartNextWave();
     }
 }
