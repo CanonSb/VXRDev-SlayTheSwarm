@@ -650,6 +650,16 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
         type: 3}
+      propertyPath: waveDuration
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
+        type: 3}
+      propertyPath: DNCycleManager
+      value: 
+      objectReference: {fileID: 2133334317}
+    - target: {fileID: 7292532189759436175, guid: 40c08cc91f3769640a59bd534818d1aa,
+        type: 3}
       propertyPath: catapults.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -801,7 +811,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e7b59c856f384cb5ae0eee50be4b864, type: 3}
---- !u!1 &1090133466
+--- !u!1 &1024681297
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -809,23 +819,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1090133469}
-  - component: {fileID: 1090133468}
-  - component: {fileID: 1090133467}
+  - component: {fileID: 1024681300}
+  - component: {fileID: 1024681299}
+  - component: {fileID: 1024681298}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1090133467
+--- !u!114 &1024681298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090133466}
+  m_GameObject: {fileID: 1024681297}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
@@ -842,13 +852,13 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
---- !u!108 &1090133468
+--- !u!108 &1024681299
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090133466}
+  m_GameObject: {fileID: 1024681297}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 1
@@ -904,13 +914,13 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!4 &1090133469
+--- !u!4 &1024681300
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090133466}
+  m_GameObject: {fileID: 1024681297}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
@@ -1541,6 +1551,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4037528550301627666, guid: 1f34506a0d63acf41ada47a62db6747c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4110988139186940736, guid: 1f34506a0d63acf41ada47a62db6747c,
         type: 3}
       propertyPath: m_Name
@@ -2073,9 +2088,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2915435872123628891, guid: 7ecc269b31f15854194ac5df46d65392,
         type: 3}
+      propertyPath: currentTime
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915435872123628891, guid: 7ecc269b31f15854194ac5df46d65392,
+        type: 3}
       propertyPath: directionalLight
       value: 
-      objectReference: {fileID: 1090133468}
+      objectReference: {fileID: 1024681299}
     - target: {fileID: 4630508222501375828, guid: 7ecc269b31f15854194ac5df46d65392,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2131,17 +2151,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: DayNightCycleManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8448146895370386379, guid: 7ecc269b31f15854194ac5df46d65392,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ecc269b31f15854194ac5df46d65392, type: 3}
+--- !u!114 &2133334317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2915435872123628891, guid: 7ecc269b31f15854194ac5df46d65392,
+    type: 3}
+  m_PrefabInstance: {fileID: 2133334316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd944d5baf89a454288012b0ebe98cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1606606194}
-  - {fileID: 1090133469}
+  - {fileID: 1024681300}
   - {fileID: 1774056961}
   - {fileID: 2133334316}
   - {fileID: 2128660351}

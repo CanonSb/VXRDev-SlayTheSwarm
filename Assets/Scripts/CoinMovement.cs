@@ -22,9 +22,12 @@ public class CoinTracking : MonoBehaviour
 
     private Transform playerCam;
 
+    public float coinLifeTime;
+
     // Start is called before the first frame update
     void Start()
     {
+        Destroy(gameObject, coinLifeTime);
         if (gameController == null) gameController = GameObject.FindWithTag("GameController");
 
         if (gameController != null)
