@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Shield
   description: For protecting what's most valuable
-  modelPrefab: {fileID: 0}
   allowTeleportation: 0
   allowBlocking: 1
   allowDamage: 0
+  showHandModel: 0
   damageMultiplier: -1

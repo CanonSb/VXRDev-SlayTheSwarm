@@ -8,5 +8,6 @@ public class EquippableItemData : ScriptableObject
     public bool allowTeleportation; // Can the player teleport with this item?
     public bool allowBlocking; // Can the player block with this item?
     public bool allowDamage; // Can the player deal damage with this item?
+    public bool showHandModel = true; // Should the hand model be shown?
     public int damageMultiplier = -1; // How much damage does this item deal?
 }
